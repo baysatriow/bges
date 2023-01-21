@@ -113,7 +113,13 @@
 									<th>Nama AM</th>
 									<th>NIK</th>
 									<th>Segmen</th>
+									<?php 
+										if($user['level'] == "Admin"){
+									?>
 									<th width="150px">Aksi</th>
+									<?php 
+										}
+									?>
 								</tr>
 							</thead>
 							<tbody align="center">
@@ -129,12 +135,15 @@
 									<td><?= $am['nama_am'] ?></td>
 									<td><?= $am['nik'] ?></td>
 									<td ><?=$am['segmen'] ?></td>
+									<?php 
+										if($user['level'] == "Admin"){
+									?>
 									<td>
 										<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#detail&id=<?= enkripsi($am['id_am']) ?>"><i class="fas fa-info-circle"></i></button>
 										<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#modal-edit<?= $no ?>"></i>Edit</button>
 										<button type='button' class='btn btn-danger btn-xs' id='hapus' onclick="hapus('<?=($am['id_am']) ?>')" >Hapus</button>
 										<!-- Modal Details Here -->
-										<div class="modal fade bd-example-modal-lg" id="detail&id=<?=$am['id_am'] ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+										<div class="modal fade bd-example-modal-lg" id="detail&id=<?= enkripsi($am['id_am']) ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 									        <div class="modal-dialog" role="document">
 									            <div class="modal-content">
 									            	<!-- Desc -->
@@ -248,6 +257,9 @@
 										</script>
 										<!-- Script End -->
 									</td>
+									<?php 
+										}
+									?>
 								</tr>
 								<?php } ?>
 							</tbody>

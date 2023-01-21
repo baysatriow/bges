@@ -27,7 +27,7 @@
 			<form id="form-setting">
 			<div class="card" id="settings-card">
 				<div class="card-header">
-					Halaman ini memuat pengaturan pengguna
+					<div class="alert alert-info">Halaman ini Memuat Pengaturan Pengguna, Kolom <b>Password Baru</b> Hanya Di Isi Jika Ingin Ganti Password</div>
 				</div>
 				<div class="card-body">
 					<div class="form-group row align-items-center">
