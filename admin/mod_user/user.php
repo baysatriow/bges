@@ -21,7 +21,7 @@
 			<div class="card">
 				<div class="card-header">
 				<?php 
-					if($user['level'] == "admin"){
+					if($user['level'] == "Admin"){
 					?>
 					<!-- <button class="btn btn-dark btn-xs" data-toggle="modal" data-target="#importdata"><i class="fas fa-upload"></i> Import</button> -->
 					<button class="btn btn-dark btn-xs" data-toggle="modal" data-target="#tambahdata"><i class="fas fa-plus-square"></i> Tambah</button>

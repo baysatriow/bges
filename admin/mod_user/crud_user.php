@@ -18,8 +18,7 @@ if ($pg == 'edit') {
             'email'         => $_POST['email'],
             'username'      => $_POST['username'],
             'phone'         => $_POST['phone'],
-            'level'         => strtolower($_POST['Roles']),
-            'Roles'         => $_POST['Roles'],
+            'level'         => $_POST['Roles'],
             'password'      => password_hash($_POST['password_baru'], PASSWORD_DEFAULT),
         ];
     } else {
@@ -28,8 +27,7 @@ if ($pg == 'edit') {
             'email'         => $_POST['email'],
             'username'      => $_POST['username'],
             'phone'         => $_POST['phone'],
-            'level'         => strtolower($_POST['Roles']),
-            'Roles'         => $_POST['Roles'],
+            'level'         => $_POST['Roles'],
         ];
     }
 
@@ -88,8 +86,7 @@ if ($pg == 'tambah_aja') {
         'username'      => $_POST['username'],
         'password'      => password_hash($_POST['password'],PASSWORD_DEFAULT),
         'phone'         => $_POST['phone'],
-        'level'         => strtolower($_POST['Roles']),
-        'Roles'         => $_POST['Roles'],
+        'level'         => $_POST['Roles'],
         'photo'         => $_FILES['profile']['name'],
     ];
 

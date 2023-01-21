@@ -96,7 +96,7 @@ if (isset($_SESSION['id_user'])) {
 											<div class="avatar-lg"><img src="../assets/img/logo.png" alt="image profile" class="avatar-img rounded"></div>
 											<div class="u-text">
 												<h4><?= $user['nama']?></h4>
-												<p class="text-muted"><?= $user['level']?></p><a href="logout.php" class="btn btn-xs btn-secondary btn-sm"><i class="fas fa-sign-out-alt"></i> Logout</a>
+												<p class="text-muted"><?= $user['Roles']?></p><a href="logout.php" class="btn btn-xs btn-secondary btn-sm"><i class="fas fa-sign-out-alt"></i> Logout</a>
 											</div>
 										</div>
 									</li>
@@ -198,7 +198,7 @@ if (isset($_SESSION['id_user'])) {
 				</div>
 			</div>
 			<?php 
-			if($user['level'] == "admin"){
+			if($user['level'] == "Admin"){
 			?>
 			<div class="custom-toggle">
 				<i class="flaticon-settings"></i>

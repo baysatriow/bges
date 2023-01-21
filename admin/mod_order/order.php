@@ -21,13 +21,13 @@
 			<div class="card">
 				<div class="card-header">
 				<?php 
-					if($user['level'] == "admin"){
+					if($user['level'] == "Admin"){
 					?>
 					<!-- <button class="btn btn-dark btn-xs" data-toggle="modal" data-target="#importdata"><i class="fas fa-upload"></i> Import</button> -->
 					<button class="btn btn-dark btn-xs" data-toggle="modal" data-target="#tambahdata"><i class="fas fa-plus-square"></i> Tambah</button>
 					<button type="button" id="btnhapus" class="btn btn-dark btn-xs"><i class="fas fa-trash    "></i> Hapus</button>
 					<?php }
-					else if($user['level'] == "office") {
+					else if($user['level'] == "Office") {
 					?>
 					<button class="btn btn-dark btn-xs" data-toggle="modal" data-target="#tambahdata"><i class="fas fa-plus-square"></i> Tambah</button>
 					<button type="button" id="btnhapus" class="btn btn-dark btn-xs"><i class="fas fa-trash    "></i> Hapus</button>

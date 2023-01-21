@@ -8,7 +8,7 @@
 				<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
 					<span>
 						<?= $user['nama']?>
-						<span class="user-level"><?= $user['Roles']?></span>
+						<span class="user-level"><?= $user['level']?></span>
 						<span class="caret"></span>
 					</span>
 				</a>
@@ -92,7 +92,7 @@
 							</a>
 						</li>
 						<?php
-						if($user['level'] == "admin"){
+						if($user['level'] == "Admin"){
 							?>
 						<li>
 							<a href="?pg=setting">
