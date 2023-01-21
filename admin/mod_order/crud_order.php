@@ -20,28 +20,47 @@ if ($pg == 'edit') {
 }
 if ($pg == 'tambah') {
     $data = [
-        'nama_am'          => $_POST['nama_am'],
-        'nik'           => $_POST['nik'],
-        'segmen'           => $_POST['segmen'],
- 
+        'tgl_input'       => $_POST['tgl_input'],
+        'nama_am'         => $_POST['nama_am'],
+        'hrg_otc'         => $_POST['hrg_otc'],
+        'hrg_mountly'     => $_POST['hrg_mountly'],
+        'status_lyn'      => $_POST['status_lyn'],
+        'status_order'    => $_POST['status_order'],
+        'date_end'        => $_POST['date_end'],
+        'date_prov'       => $_POST['date_prov'],
+        'order_lama'      => $_POST['order_lama'],
+        'ket'             => $_POST['ket'],
+        'no_order'        => $_POST['nomor_order'],
     ];
-    $exec = insert($koneksi, 'tb_am', $data);
-    echo $exec;
+    $exec = insert($koneksi, 'tb_order', $data);
+    if($exec){
+        echo "OK";
+    }
+
+
 }
 
-if ($pg == 'autofill') {
+if ($pg == 'auto_pel') {
     //variabel no_order yang dikirimkan form.php
-    $nomor_order = $_GET['order_lama'];
+    $nomor_order= $_GET['nomor_order'];
 
     //mengambil data
     $query = mysqli_query($koneksi, "select * from tb_pelanggan where nomor_order='$nomor_order'");
-    $userid = mysqli_fetch_array($query);
+    $order = mysqli_fetch_array($query);
     $data = array(
-                'nomor_order'  =>  @$userid['nomor_order'],        
-                'nama_pel'     =>  @$userid['nama_pel'],
-                'ca'           =>  @$userid['ca'],
-                'ca_site'      =>  @$userid['ca_site'],);
-            
+                'nomor_order'  =>  @$order['nomor_order'],        
+                'nama_pel'     =>  @$order['nama_pel'],
+                'layanan'      =>  @$order['layanan'],
+                'ca'           =>  @$order['ca'],
+                'ca_site'      =>  @$order['ca_site'],
+                'ca_nipnas'    =>  @$order['ca_nipnas'],
+                'ba'           =>  @$order['ba'],
+                'ba_site'      =>  @$order['ba_site'],
+                'nomor_quote'  =>  @$order['nomor_quote'],
+                'nomor_aggre'  =>  @$order['nomor_aggre'],
+                'sid'          =>  @$order['sid'],
+            );
+               
     //tampil data
     echo json_encode($data);
 }

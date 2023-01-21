@@ -56,6 +56,8 @@ if (isset($_SESSION['id_user'])) {
     <!-- JS Libraies -->
     <script src="../assets/modules/cleave-js/dist/cleave.min.js"></script>
     <script src="../assets/modules/chocolat/dist/js/jquery.chocolat.min.js"></script>
+	<!-- Ajax Autofill Library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body>
 	<div class="wrapper">

@@ -77,15 +77,6 @@
 				                            <label>Tanggal Input</label>
 				                            <input type="date" name="tgl_input" class="form-control" required="">
 				                        </div>
-				                        <div class="form-group">
-				                            <label>Segmen</label>
-				                            <!-- <input type="number" name="segmen" class="form-control" required=""> -->
-											<select name="segmen" id="" class="form-control" required=''>
-												<option value="DBS">DBS</option>
-												<option value="DGS">DGS</option>
-												<option value="DES">DES</option>
-											</select>
-				                        </div>
 										<div class="form-group">
 				                            <label>Nama AM</label>
 											<select type="text" id="nama_am_search" name="nama_am" class="form-control selectpicker" data-live-search="true" required=''>
@@ -104,56 +95,18 @@
 													</select>
 				                        </div>
 										<div class="form-group">
-				                            <label>Nama Pelanggan</label>
-				                            <input type="text" name="nama_pel" class="form-control" required="">
-				                        </div>
-										<div class="form-group">
-				                            <label>Layanan</label>
-				                            <input type="text" name="layanan" class="form-control" required="">
-				                        </div>
-										<div class="form-group">
-				                            <label>Harga OTC</label>
-				                            <input type="text" name="hrg_otc" class="form-control" required="">
-				                        </div>
-										<div class="form-group">
-				                            <label>Harga Monthly</label>
-				                            <input type="text" name="hrg_otc" class="form-control" required="">
-				                        </div>
-										<div class="form-group">
-				                            <label>Status Layanan</label>
-				                            <input type="text" name="status_lyn" class="form-control" required="">
-				                        </div>
-										<div class="form-group">
-				                            <label>Customer Account</label>
-				                            <input type="text" name="ca" class="form-control" required="">
-				                        </div>
-										<div class="form-group">
-				                            <label>Customer Account Site</label>
-				                            <input type="text" name="ca_site" class="form-control" required="">
-				                        </div>
-										<div class="form-group">
-				                            <label>Customer Account Nipnas</label>
-				                            <input type="text" name="ca_nipnas" class="form-control" required="">
-				                        </div>
-										<div class="form-group">
-				                            <label>Billing Account</label>
-				                            <input type="text" name="ba" class="form-control" required="">
-				                        </div>
-										<div class="form-group">
-				                            <label>Billing Account Site</label>
-				                            <input type="text" name="ba_site" class="form-control" required="">
-				                        </div>
-										<div class="form-group">
-				                            <label>Nomor Quote</label>
-				                            <input type="text" name="nomor_quote" class="form-control" required="">
-				                        </div>
-										<div class="form-group">
-				                            <label>Nomor Aggrement</label>
-				                            <input type="text" name="nomor_aggrement" class="form-control" required="">
+				                            <label>Segmen</label>
+				                            <!-- <input type="number" name="segmen" class="form-control" required=""> -->
+											<select name="segmen" id="" class="form-control" required=''>
+												<option value="DBS">DBS</option>
+												<option value="DGS">DGS</option>
+												<option value="DES">DES</option>
+											</select>
 				                        </div>
 										<div class="form-group">
 				                            <label>Nomor Order</label>
-											<select type="text" id="nomor_order" name="nomor_order" class="form-control selectpicker"  data-live-search="true" required=''>
+											<!-- <input type="text" id="nomor_order" name="nomor_order" class="form-control" onchange="auto_pelanggan()" autocomplete="off" placeholder="Isi Otomatis" required autofocus><br/> -->
+											<select type="text" name="nomor_order" id="nomor_order" class="form-control selectpicker" onchange="auto_pelanggan()" autocomplete="off" data-live-search="true" required autofocus>
 													<?php 
 													// Fetch Nomor_order
 													$nomor_order_query = "SELECT * FROM tb_pelanggan";
@@ -169,24 +122,72 @@
 													</select>
 				                        </div>
 										<div class="form-group">
+				                            <label>Nama Pelanggan</label>
+				                            <input type="text" id="nama_pel" name="nama_pel" class="form-control" autocomplete="on" readonly>
+				                        </div>
+										<div class="form-group">
+				                            <label>Customer Account</label>
+				                            <input type="text" id="ca" name="ca" class="form-control" readonly>
+				                        </div>
+										<div class="form-group">
+				                            <label>Customer Account Site</label>
+				                            <input type="text" id="ca_site" name="ca_site" class="form-control" readonly>
+				                        </div>
+										<div class="form-group">
+				                            <label>Customer Account Nipnas</label>
+				                            <input type="text" id="ca_nipnas" name="ca_nipnas" class="form-control" readonly>
+				                        </div>
+										<div class="form-group">
+				                            <label>Billing Account</label>
+				                            <input type="text" id="ba" name="ba" class="form-control" readonly>
+				                        </div>
+										<div class="form-group">
+				                            <label>Billing Account Site</label>
+				                            <input type="text" id="ba_site" name="ba_site" class="form-control" readonly>
+				                        </div>
+										<div class="form-group">
+				                            <label>Nomor Quote</label>
+				                            <input type="text" id="nomor_quote" name="nomor_quote" class="form-control" readonly>
+				                        </div>
+										<div class="form-group">
+				                            <label>Nomor Aggrement</label>
+				                            <input type="text" id="nomor_aggre" name="nomor_aggre" class="form-control" readonly>
+				                        </div>
+										<div class="form-group">
+				                            <label>Sid</label>
+				                            <input type="text" id="sid" name="sid" class="form-control" readonly>
+				                        </div>
+										<div class="form-group">
+				                            <label>Layanan</label>
+				                            <input type="text" id="layanan" name="layanan" class="form-control" readonly>
+				                        </div>
+										<div class="form-group">
+				                            <label>Harga OTC</label>
+				                            <input type="text" name="hrg_otc" class="form-control" required="">
+				                        </div>
+										<div class="form-group">
+				                            <label>Harga Monthly</label>
+				                            <input type="text" name="hrg_mountly" class="form-control" required="">
+				                        </div>
+										<div class="form-group">
+				                            <label>Status Layanan</label>
+				                            <input type="text" name="status_lyn" class="form-control" required="">
+				                        </div>
+										<div class="form-group">
 				                            <label>Status Order</label>
 				                            <input type="text" name="status_order" class="form-control" required="">
 				                        </div>
 										<div class="form-group">
 				                            <label>Date End Of Contract</label>
-				                            <input type="text" name="date_end" class="form-control" required="">
+				                            <input type="date" name="date_end" class="form-control" required="">
 				                        </div>
 										<div class="form-group">
 				                            <label>Date Prov Of Contract</label>
-				                            <input type="text" name="date_prov" class="form-control" required="">
+				                            <input type="date" name="date_prov" class="form-control" required="">
 				                        </div>
 										<div class="form-group">
 				                            <label>Nomor Order Lama</label>
-				                            <input type="text" name="order_lama"  onchange="isi_otomatis()" class="form-control" required="">
-				                        </div>
-										<div class="form-group">
-				                            <label>Sid</label>
-				                            <input type="text" name="sid" class="form-control" required="">
+				                            <input type="text" name="order_lama"class="form-control" required="">
 				                        </div>
 										<div class="form-group">
 				                            <label>Keterangan</label>
@@ -211,27 +212,27 @@
 								<tr>
 									<!-- <th><input type='checkbox' id='ceksemua'></th> -->
 									<th>#</th>
-									<th>Tanggal Input</th>
+									<th nowrap>Tanggal Input</th>
 									<th>Segmen</th>
 									<th>Nama AM</th>
 									<th>Nama Pelanggan</th>
 									<th>Layanan</th>
-									<th>Harga OTC</th>
-									<th>Harga Monthly</th>
+									<th nowrap>Harga OTC</th>
+									<th nowrap>Harga Monthly</th>
 									<th>Status Layanan</th>
-									<th>Customer Account</th>
-									<th>Customer Account Site</th>
-									<th>Customer Account Nipnas</th>
-									<th>Billing Account</th>
-									<th>Billing Account Site</th>
-									<th>Nomor Quote</th>
-									<th>Nomor Aggrement</th>
-									<th>Nomor Order</th>
-									<th>Status Order</th>
-									<th>Date End Of Contract</th>
+									<th nowrap>Customer Account</th>
+									<th nowrap>CA Site</th>
+									<th nowrap>CA Nipnas</th>
+									<th nowrap>Billing Account</th>
+									<th nowrap>Billing Account Site</th>
+									<th nowrap>Nomor  Quote</th>
+									<th nowrap>Nomor Aggrement</th>
+									<th nowrap>Nomor Order</th>
+									<th nowrap>Status Order</th>
+									<th nowrap>Date End Of Contract</th>
 									<th>Contract Remaining</th>
-									<th>Date Prov of Contract</th>
-									<th>Nomor Order Lama</th>
+									<th nowrap>Date Prov of Contract</th>
+									<th nowrap>Nomor Order Lama</th>
 									<th>Sid</th>
 									<th>Keterangan</th>
 									<th>Aksi</th>
@@ -395,6 +396,28 @@
 </div>
 <!-- Page Script -->
 <script>
+	// Experiment Autofill
+	function auto_pelanggan(){
+                var nomor_order = $("#nomor_order").val();
+                $.ajax({
+                    url: 'mod_order/crud_order.php?pg=auto_pel',
+                    data:"nomor_order="+nomor_order ,
+                }).success(function (data) {
+                    var json = data,
+                    obj = JSON.parse(json);
+                    $('#nomor_order').val(obj.nomor_order);
+                    $('#nama_pel').val(obj.nama_pel);
+                    $('#layanan').val(obj.layanan);
+					$('#ca').val(obj.ca);
+					$('#ca_site').val(obj.ca_site);
+					$('#ca_nipnas').val(obj.ca_nipnas);
+					$('#ba').val(obj.ba);
+					$('#ba_site').val(obj.ba_site);
+					$('#nomor_quote').val(obj.nomor_quote);
+					$('#nomor_aggre').val(obj.nomor_aggre);
+					$('#sid').val(obj.sid);
+                });
+            }
 
 $(document).ready(function(){
 	
@@ -433,19 +456,7 @@ $(document).ready(function(){
 
 	
 	
-	// Experiment Autofill
-	function isi_otomatis(){
-                var order_lama = $("#order_lama").val();
-                $.ajax({
-                    url: "mod_order/crud_order.php?pg=autofill",
-                    data:"order_lama="+order_lama ,
-                }).success(function (data) {
-                    var json = data,
-                    obj = JSON.parse(json);
-                    $('#order_lama').val(obj.order_lama);
-					$('#nama_pel').val(obj.nama_pel);
-                });
-            }
+
 
 	$('#ceksemua').change(function() {
         $(this).parents('#basic-datatables:eq(0)').
@@ -479,6 +490,8 @@ $(document).ready(function(){
             return false;
         })
     });
+
+	// Add Data
 	$('#form-tambah').submit(function(e) {
         e.preventDefault();
         $.ajax({
