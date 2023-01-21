@@ -28,7 +28,7 @@ if ($pg == 'edit') {
             'email'         => $_POST['email'],
             'username'      => $_POST['username'],
             'phone'         => $_POST['phone'],
-            'level'         => $_POST['Roles'],
+            'level'         => strtolower($_POST['Roles']),
             'Roles'         => $_POST['Roles'],
         ];
     }
