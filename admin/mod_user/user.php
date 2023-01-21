@@ -295,23 +295,24 @@
 													success: function(data) {
 														var json = data;
 														$('#btnsimpan').prop('disabled', false);
-														if (json == 'ok') {
-															iziToast.success({
-																title: 'Terima Kasih!',
-																message: 'Data berhasil disimpan',
-																position: 'topCenter'
-															});
-
-														} else if (json == 'ukuran'){
+														if (json == 'ukuran'){
 															iziToast.warning({
 																title: 'Maaf',
 																message: 'Ukuran Data Terlalu Besar',
 																position: 'topCenter'
 															});
-														}
-														setTimeout(function() {
+														} else {
+															iziToast.success({
+																title: 'Terima Kasih!',
+																message: 'Data berhasil disimpan',
+																position: 'topCenter'
+															});
+															setTimeout(function() {
 															window.location.reload();
-														}, 2000);
+															}, 2000);
+
+														}
+														
 														//$('#bodyreset').load(location.href + ' #bodyreset');
 													}
 												});
