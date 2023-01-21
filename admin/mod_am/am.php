@@ -141,7 +141,7 @@
 									<td>
 										<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#detail&id=<?= enkripsi($am['id_am']) ?>"><i class="fas fa-info-circle"></i></button>
 										<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#modal-edit<?= $no ?>"></i>Edit</button>
-										<button type='button' class='btn btn-danger btn-xs' id='hapus' onclick="hapus('<?=($am['id_am']) ?>')" >Hapus</button>
+										<button type='button' class='hapus btn btn-danger btn-xs'  data-id="<?= $am['id_am'] ?>" >Hapus</button>
 										<!-- Modal Details Here -->
 										<div class="modal fade bd-example-modal-lg" id="detail&id=<?= enkripsi($am['id_am']) ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 									        <div class="modal-dialog" role="document">
@@ -307,34 +307,37 @@
         })
     });
 
-	// Delete Record By id
-	function hapus(id) {
-		$.ajax({
-			type: 'POST',
-			data: 'id='+id,
-			url: 'mod_am/crud_am.php?pg=hapus',
-			success: function(data) {
-                if (data == 'OK') {
-                    iziToast.success({
-                        title: 'Mantap!',
-                        message: 'Data Berhasil di Hapus',
-                        position: 'topRight'
-                    });
-                    setTimeout(function() {
-                        window.location.reload();
-                    }, 2000);
-                    $('#tambahdata').modal('hide');
-                } else {
-                    iziToast.error({
-                        title: 'Maaf!',
-                        message: 'Data Gagal dihapus',
-                        position: 'topRight'
-                    });
-                }
-                //$('#bodyreset').load(location.href + ' #bodyreset');
+	// Hapus with swal
+	$('#basic-datatables1').on('click', '.hapus', function() {
+        var id = $(this).data('id');
+        console.log(id);
+        swal({
+            title: 'Are you sure?',
+            text: 'Akan menghapus data ini!',
+            icon: 'warning',
+            buttons: true,
+            dangerMode: true,
+        }).then((result) => {
+            if (result) {
+                $.ajax({
+                    url: 'mod_am/crud_am.php?pg=hapus',
+                    method: "POST",
+                    data: 'id_am=' + id,
+                    success: function(data) {
+                        iziToast.error({
+                            title: 'Success',
+                            message: 'Data Berhasil dihapus',
+                            position: 'topRight'
+                        });
+                        setTimeout(function() {
+                            window.location.reload();
+                        }, 2000);
+                    }
+                });
             }
-			});
-		}
+        })
+
+    });
 
 	// Add Record 
 	$('#form-tambah').submit(function(e) {

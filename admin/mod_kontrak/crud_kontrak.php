@@ -212,7 +212,7 @@ if  ($pg == 'tambah'){
 // Delete Record By id
 if ($pg == 'hapus') {
 
-    $id=$_POST['id'];
+    $id=$_POST['id_kontrak'];
     // $hapus = mysql_query("delete from tb_am where id=".$id." ");
     $query = mysqli_query($koneksi, "DELETE from tb_kontrak where id_kontrak=".$id." ");
     if($query) {

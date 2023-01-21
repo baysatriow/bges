@@ -36,7 +36,7 @@ if ($pg == 'tambah') {
 // Hapus Per Record
 if ($pg == 'hapus') {
 
-    $id=$_POST['id'];
+    $id=$_POST['id_am'];
     // $hapus = mysql_query("delete from tb_am where id=".$id." ");
     $query = mysqli_query($koneksi, "DELETE from tb_am where id_am=".$id." ");
     if($query) {

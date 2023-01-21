@@ -372,36 +372,8 @@
             return false;
         })
     });
-
-	// Delete Record By id
-	// function hapus(id) {
-	// 	$.ajax({
-	// 		type: 'POST',
-	// 		data: 'id='+id,
-	// 		url: 'mod_user/crud_user.php?pg=hapus',
-	// 		success: function(data) {
-    //             if (data == 'OK') {
-    //                 iziToast.success({
-    //                     title: 'Mantap!',
-    //                     message: 'Data Berhasil di Hapus',
-    //                     position: 'topRight'
-    //                 });
-    //                 setTimeout(function() {
-    //                     window.location.reload();
-    //                 }, 2000);
-               
-    //             } else {
-    //                 iziToast.error({
-    //                     title: 'Maaf!',
-    //                     message: 'Data Gagal dihapus',
-    //                     position: 'topRight'
-    //                 });
-    //             }
-    //             //$('#bodyreset').load(location.href + ' #bodyreset');
-    //         }
-	// 		});
-	// 	}
-
+	
+	// Hapus with swal
 		$('#basic-datatables1').on('click', '.hapus', function() {
         var id = $(this).data('id');
         console.log(id);
