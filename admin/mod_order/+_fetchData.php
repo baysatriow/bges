@@ -1,4 +1,5 @@
 <?php 
+$nilai = $_GET['nilai'];
 // Database connection info 
 $dbDetails = array( 
     'host' => 'localhost', 
@@ -8,19 +9,30 @@ $dbDetails = array(
 ); 
  
 // DB table to use 
-// $table = 'tb_order'; 
+// $table = 'members'; 
 // $table = <<<EOT
 //  (
-//     SELECT
-//       a.id_order,
-//       a.tgl_input,
-//       b.segmen
-//       a.nama_am
-//     FROM tb_order a
-//     LEFT JOIN tb_am b ON a.nama_am = b.nama_am
+//     SELECT 
+//       a.id, 
+//       a.first_name, 
+//       a.last_name, 
+//       a.email, 
+//       a.gender, 
+//       a.country, 
+//       a.created, 
+//       a.status, 
+//       a.id_kelas,
+//       a.id_mapel,
+//       b.nama_kelas,
+//       b.harga_kelas,
+//       c.nama_mapel,
+//       c.kesulitan_mapel
+//     FROM members a LEFT JOIN kelas b ON a.id_kelas = b.id_kelas LEFT JOIN tb_mapel c ON a.id_mapel = c.id_mapel
+
 //  ) temp
 // EOT;
-$table = <<<EOT
+
+ $table = <<<EOT
 (
    SELECT 
      a.id_order, 
@@ -51,7 +63,6 @@ $table = <<<EOT
    INNER JOIN tb_am c ON a.nama_am = c.nama_am
 ) temp
 EOT;
-
 // Table's primary key 
 $primaryKey = 'id_order'; 
  
@@ -75,36 +86,40 @@ $columns = array(
     array( 'db' => 'hrg_otc', 'dt' => 6 ),
     array( 'db' => 'hrg_mountly', 'dt' => 7 ),
     array( 'db' => 'status_lyn', 'dt' => 8 ),
-    array( 'db' => 'ca', 'dt' => 9 ),
-    array( 'db' => 'ca_site', 'dt' => 10 ),
-    array( 'db' => 'ca_nipnas', 'dt' => 11 ),
-    array( 'db' => 'ba', 'dt' => 12 ),
-    array( 'db' => 'ba_site', 'dt' => 13 ),
-    array( 'db' => 'nomor_quote', 'dt' => 14 ),
-    array( 'db' => 'nomor_aggre', 'dt' => 15 ),
-    array( 'db' => 'nomor_order', 'dt' => 16 ),
-    array( 'db' => 'status_order', 'dt' => 17 ),
+    // array( 'db' => 'ca', 'dt' => 9 ),
+    // array( 'db' => 'ca_site', 'dt' => 10 ),
+    // array( 'db' => 'ca_nipnas', 'dt' => 11 ),
+    // array( 'db' => 'ba', 'dt' => 12 ),
+    // array( 'db' => 'ba_site', 'dt' => 13 ),
+    // array( 'db' => 'nomor_quote', 'dt' => 14 ),
+    // array( 'db' => 'nomor_aggre', 'dt' => 15 ),
+    // array( 'db' => 'nomor_order', 'dt' => 16 ),
+    // array( 'db' => 'status_order', 'dt' => 17 ),
     array( 'db' => 'date_end', 'dt' => 18 ),
     array( 'db' => 'date_end', 'dt' => 19 ),  
     array( 'db' => 'date_prov', 'dt' => 20 ),
-    array( 'db' => 'order_lama', 'dt' => 21 ),
-    array( 'db' => 'sid', 'dt' => 22 ),
-    array( 'db' => 'ket', 'dt' => 23 ),
+    // array( 'db' => 'order_lama', 'dt' => 21 ),
+    // array( 'db' => 'sid', 'dt' => 22 ),
+    // array( 'db' => 'ket', 'dt' => 23 ),
     // array(  'db' => 'id_order',
     //         'dt' => 24,
 
     //         // kalo kalian mau bikin tombol edit pake 'formatter' => function($d, $row) {return ....}
     //         // kalian bisa custom dengan menggunakan class bootstrap untuk mempercantik tampilan
     //         'formatter' => function($d, $row) {
-    //             return '<button class="btn btn-dark btn-xs" data-toggle="modal" data-target="#editdata&id='.$d.'"></i>Edit</button>';
+    //             return '<a href="edit?id='.$d.'">EDIT</a>';
     //         }
     //      ),
 ); 
- 
+
 // Include SQL query processing class 
-require("../../config/ssp.php"); 
- 
+require 'ssp.php'; 
+
+// require('ssp.class.php');
+
 // Output data as json format 
 echo json_encode( 
-    SSP::simple( $_GET, $dbDetails, $table, $primaryKey, $columns ) 
+    SSP::simple( $_GET, $dbDetails, $table, $primaryKey, $columns )
+    // SSP::simple( $_GET, $dbDetails, $table, $primaryKey, $columns)
+
 );

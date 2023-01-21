@@ -15,6 +15,7 @@ if (isset($_SESSION['id_user'])) {
   $pelanggan_count = mysqli_fetch_array(mysqli_query($koneksi, "select count(1) from tb_pelanggan"));
   $total_pelanggan = $pelanggan_count[0];
   $user_setting    = mysqli_fetch_array(mysqli_query($koneksi, "select * from tb_user where id_user='$_SESSION[id_user]'"));
+  $order		   = mysqli_fetch_array(mysqli_query($koneksi, "select * from tb_order"));
 ?>
 <!DOCTYPE html>
 <html lang="en">
