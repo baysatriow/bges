@@ -23,12 +23,13 @@
 				<?php 
 					if($user['level'] == "Admin"){
 					?>
-					<!-- <button class="btn btn-dark btn-xs" data-toggle="modal" data-target="#importdata"><i class="fas fa-upload"></i> Import</button> -->
+					<button class="btn btn-dark btn-xs" data-toggle="modal" data-target="#importdata"><i class="fas fa-upload"></i> Import</button>
 					<button class="btn btn-dark btn-xs" data-toggle="modal" data-target="#tambahdata"><i class="fas fa-plus-square"></i> Tambah</button>
 					<button type="button" id="btnhapus" class="btn btn-dark btn-xs"><i class="fas fa-trash    "></i> Hapus</button>
 					<?php }
 					else if($user['level'] == "Office") {
 					?>
+					<button class="btn btn-dark btn-xs" data-toggle="modal" data-target="#importdata"><i class="fas fa-upload"></i> Import</button>
 					<button class="btn btn-dark btn-xs" data-toggle="modal" data-target="#tambahdata"><i class="fas fa-plus-square"></i> Tambah</button>
 					<button type="button" id="btnhapus" class="btn btn-dark btn-xs"><i class="fas fa-trash    "></i> Hapus</button>
 					<?php	} ?>
@@ -46,11 +47,15 @@
 				                    </div>
 				                    <div class="modal-body">
 				                        <div class="form-group">
-				                            <label for="file">Import File Excel</label>
-				                            <input type="file" class="form-control-file" name="file" id="file" placeholder="" aria-describedby="helpfile" required>
-				                            <small id="helpfile" class="form-text text-muted">File harus .xlx</small>
+											<div class="custom-file">
+												<input type="file" name="file" class="custom-file-input" id="file" accept="application/vnd.ms-excel" aria-describedby="helpfile" required>
+												<label class="custom-file-label">Import File Excel</label>
+											</div>
+				                            <small id="helpfile" class="form-text text-muted">File harus .xls</small>
 				                        </div>
-				                        <a href="template_excel/importsekolah.xls">Download template Excel</a>
+										<div class="form-group">
+											<a class="text-light btn btn-success btn-sm" href="../assets/uploaded/template_excel/template_order.xls" >Download Template Excel</a>
+										</div>
 				                    </div>
 				                    <div class="modal-footer">
 				                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -396,6 +401,12 @@
 </div>
 <!-- Page Script -->
 <script>
+	// Custom File Value
+	$(".custom-file-input").on("change", function() {
+	var fileName = $(this).val().split("\\").pop();
+	$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+	});
+
 	// Experiment Autofill
 	function auto_pelanggan(){
                 var nomor_order = $("#nomor_order").val();
