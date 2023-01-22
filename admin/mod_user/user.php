@@ -157,12 +157,12 @@
 										</div>
 									</td>
 									<td>
-										<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#detail&id=<?= enkripsi($user['id_user']) ?>"><i class="fas fa-info-circle"></i></button>
+										<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#detail<?= $no ?>"><i class="fas fa-info-circle"></i></button>
 										<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#modal-edit<?= $no ?>"><i class="fas fa-plus-square"></i> Edit</button>
 										<button type='button' class='hapus btn btn-danger btn-xs'  data-id="<?= $user['id_user'] ?>" >Hapus</button>
 										
 										<!-- Modal Details Start-->
-										<div class="modal fade bd-example-modal-lg" id="detail&id=<?= enkripsi($user['id_user']) ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+										<div class="modal fade bd-example-modal-lg" id="detail<?= $no ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 									        <div class="modal-dialog" role="document">
 									            <div class="modal-content">
 									            	<!-- Desc -->

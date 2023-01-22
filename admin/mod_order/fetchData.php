@@ -90,15 +90,16 @@ $columns = array(
     array( 'db' => 'order_lama', 'dt' => 21 ),
     array( 'db' => 'sid', 'dt' => 22 ),
     array( 'db' => 'ket', 'dt' => 23 ),
-    array( 'db' => 'id_order',
-           'dt' => 24,
+    array( 'db' => 'id_order', 'dt' => 24 ),
+    // array( 'db' => 'id_order',
+    //        'dt' => 24,
 
-            // kalo kalian mau bikin tombol edit pake 'formatter' => function($d, $row) {return ....}
-            // kalian bisa custom dengan menggunakan class bootstrap untuk mempercantik tampilan
-            'formatter' => function($d, $row) {
-                return '<button class="btn btn-dark btn-xs" data-toggle="modal" data-target="#editdata&id='.$d.'"></i>Edit</button>';
-            }
-         ),
+    //         // kalo kalian mau bikin tombol edit pake 'formatter' => function($d, $row) {return ....}
+    //         // kalian bisa custom dengan menggunakan class bootstrap untuk mempercantik tampilan
+    //         'formatter' => function($d, $row) {
+    //             return '<button class="btn btn-dark btn-xs" data-toggle="modal" data-target="#editdata&id='.$d.'"></i>Edit</button>';
+    //         }
+    //      ),
 ); 
  
 // Include SQL query processing class 

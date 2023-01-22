@@ -139,11 +139,11 @@
 										if($user['level'] == "Admin"){
 									?>
 									<td>
-										<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#detail&id=<?= enkripsi($am['id_am']) ?>"><i class="fas fa-info-circle"></i></button>
+										<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#detail<?= $no ?>"><i class="fas fa-info-circle"></i></button>
 										<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#modal-edit<?= $no ?>"></i>Edit</button>
 										<button type='button' class='hapus btn btn-danger btn-xs'  data-id="<?= $am['id_am'] ?>" >Hapus</button>
 										<!-- Modal Details Here -->
-										<div class="modal fade bd-example-modal-lg" id="detail&id=<?= enkripsi($am['id_am']) ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+										<div class="modal fade bd-example-modal-lg" id="detail<?= $no ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 									        <div class="modal-dialog" role="document">
 									            <div class="modal-content">
 									            	<!-- Desc -->

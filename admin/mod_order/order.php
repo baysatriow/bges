@@ -244,7 +244,7 @@
 								</tr>
 							</thead>
 							<!-- Modal Details Here -->
-							<div class="modal fade bd-example-modal-lg" id="detail&id<?= $order['id_order'] ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+							<div class="modal fade bd-example-modal-lg" id="#detail&id=2291" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 									        <div class="modal-dialog" role="document">
 									            <div class="modal-content">
 									            	<!-- Desc -->
@@ -355,7 +355,7 @@
 									    </div>
 										<!-- Modal End -->
 							<!-- Modal Edit Here -->
-							<div class="modal fade bd-example-modal-lg" id="editdata&id=2307" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+							<div class="modal fade bd-example-modal-lg" id="editdata" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 									        <div class="modal-dialog" role="document">
 									            <div class="modal-content">
 									            	<!-- Desc -->
@@ -449,11 +449,16 @@ $(document).ready(function(){
 		             	"render": $.fn.dataTable.render.number( '.', '', '', 'Rp. ' )
 		             
 		         	},
-					// {
-		         	// 	"targets": 24,
-		            //  	"data": "id_order",
-		            //  	"defaultContent": "<center><button class='btn btn-success btn-xs' data-toggle='modal' data-target='#editdata'><i class='fas fa-edit'></i></button> <button class='btn btn-success btn-xs' data-toggle='modal' data-target='#detail&id'+ data +''><i class='fas fa-edit'></i></button>" 
-		         	// },
+					{
+						"searchable" : false,
+						"orderable"  : false,
+		         		"targets": 24,
+						"render" : function( data, type, row) {
+							var btn = "<center><button class=\"btn btn-success btn-xs\" data-toggle=\"modal\" data-target=\"#editdata\"><i class=\"fas fa-edit\"></i></button> <button class=\"btn btn-success btn-xs\" data-toggle=\"modal\" data-target=\"#detail&id="+data+"\"> <i class=\"fas fa-edit\"></i></button>";
+							return btn;
+						}
+		             	// "defaultContent": "<center><button class='btn btn-success btn-xs' data-toggle='modal' data-target='#editdata'><i class='fas fa-edit'></i></button> <button class='btn btn-success btn-xs' data-toggle='modal' data-target='#detail&id'+ data +''><i class='fas fa-edit'></i></button>" 
+		         	},
 		        ],
 				// "columns": [
 				// 	{"data":null,
