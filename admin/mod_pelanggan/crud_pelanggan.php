@@ -205,6 +205,6 @@ if ($pg == 'update') {
     ];
     $exec = update($koneksi, 'tb_pelanggan', $data, ['id_pel' => $id]);
 
-    echo $exec;
+    header("Location: ../?pg=pelanggan&pesan=sukses");    
 
 }

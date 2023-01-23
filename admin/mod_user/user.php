@@ -137,30 +137,33 @@
 								<?php
 		                            $query = mysqli_query($koneksi, "select * from tb_user");
 		                            $no = 0;
-		                            while ($user = mysqli_fetch_array($query)) {
+		                            while ($userData = mysqli_fetch_array($query)) {
 		                                $no++;
 		                            ?>
 								<tr>
-									<td><input type='checkbox' name='cekpilih[]' class='cekpilih' id='cekpilih-<?= $no ?>' value="<?= $user['id_user'] ?>"></td>
+									<td><input type='checkbox' name='cekpilih[]' class='cekpilih' id='cekpilih-<?= $no ?>' value="<?= $userData['id_user'] ?>"></td>
 									<td><?= $no; ?></td>
-									<td><?= $user['nama'] ?></td>
-									<td><?= $user['email'] ?></td>
-									<td><?= $user['username'] ?></td>
-									<td><?= $user['phone'] ?></td>
-									<td><?= $user['Roles'] ?></td>
-									<!-- <td><img src="../assets/uploaded/profile/<?= $user['photo'] ?>" alt="<?= $user['nama'] ?>" class="img-thumbnail" width="100px"></td> -->
+									<td><?= $userData['nama'] ?></td>
+									<td><?= $userData['email'] ?></td>
+									<td><?= $userData['username'] ?></td>
+									<td><?= $userData['phone'] ?></td>
+									<td><?= $userData['Roles'] ?></td>
+									<!-- <td><img src="../assets/uploaded/profile/<?= $userData['photo'] ?>" alt="<?= $userData['nama'] ?>" class="img-thumbnail" width="100px"></td> -->
 									<td>
 										<div class="image-gallery">
-											<a href="../assets/uploaded/profile/<?= $user['photo'] ?>" class="col-6 col-md-3 mb-4">
-												<img src="../assets/uploaded/profile/<?= $user['photo'] ?>" class="img-thumbnail" width="100px">
+											<a href="../assets/uploaded/profile/<?= $userData['photo'] ?>" class="col-6 col-md-3 mb-4">
+												<img src="../assets/uploaded/profile/<?= $userData['photo'] ?>" class="img-thumbnail" width="100px">
 											</a>
 										</div>
 									</td>
 									<td>
 										<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#detail<?= $no ?>"><i class="fas fa-info-circle"></i></button>
+										<?php 
+											if($user['level'] == "Admin"){
+										?>
 										<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#modal-edit<?= $no ?>"><i class="fas fa-plus-square"></i> Edit</button>
-										<button type='button' class='hapus btn btn-danger btn-xs'  data-id="<?= $user['id_user'] ?>" >Hapus</button>
-										
+										<button type='button' class='hapus btn btn-danger btn-xs'  data-id="<?= $userData['id_user'] ?>" >Hapus</button>
+										<?php } ?>
 										<!-- Modal Details Start-->
 										<div class="modal fade bd-example-modal-lg" id="detail<?= $no ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 									        <div class="modal-dialog" role="document">
@@ -169,7 +172,7 @@
 									            	
 									                <form id="form-detail">
 									                    <div class="modal-header">
-									                        <h5 class="modal-title"><i class="fas fa-info-circle"></i> Detail User <b><?= $user['nama'] ?></b></h5>
+									                        <h5 class="modal-title"><i class="fas fa-info-circle"></i> Detail User <b><?= $userData['nama'] ?></b></h5>
 									                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									                            <span aria-hidden="true">&times;</span>
 									                        </button>
@@ -177,29 +180,29 @@
 									                    <div class="modal-body">
 									                        <div class="form-group">
 									                            <label>Nama</label>
-									                            <input type="text" name="nama" class="form-control" value="<?= $user['nama'] ?>" readonly>
+									                            <input type="text" name="nama" class="form-control" value="<?= $userData['nama'] ?>" readonly>
 									                        </div>
 									                        <div class="form-group">
 									                            <label>Email</label>
-									                            <input type="email" name="email" class="form-control" value="<?= $user['email'] ?>"readonly>
+									                            <input type="email" name="email" class="form-control" value="<?= $userData['email'] ?>"readonly>
 									                        </div>
 															<div class="form-group">
 									                            <label>Username</label>
-									                            <input type="text" name="username" class="form-control" value="<?= $user['username'] ?>"readonly>
+									                            <input type="text" name="username" class="form-control" value="<?= $userData['username'] ?>"readonly>
 									                        </div>
 															
 									                        <div class="form-group">
 									                            <label>Phone</label>
-									                            <input type="text" name="phone" class="form-control" value="<?= $user['phone'] ?>"readonly>
+									                            <input type="text" name="phone" class="form-control" value="<?= $userData['phone'] ?>"readonly>
 									                        </div>
 									                        <div class="form-group">
 									                            <label>Roles</label>
-									                            <input type="text" name="Roles" class="form-control" value="<?= $user['Roles'] ?>"readonly>
+									                            <input type="text" name="Roles" class="form-control" value="<?= $userData['Roles'] ?>"readonly>
 									                        </div>
 															<div class="form-group align-items-center">
 																<label class="form-control-label">Photo</label>
 																<div>
-																<img src="../assets/uploaded/profile/<?= $user['photo'] ?>" alt="Profile" class="img-thumbnail" width="100px">
+																<img src="../assets/uploaded/profile/<?= $userData['photo'] ?>" alt="Profile" class="img-thumbnail" width="100px">
 																</div>
 															</div>
 									                    </div>
@@ -226,21 +229,21 @@
 														<div class="modal-body">
 															<div class="form-group">
 																<label>Nama</label>
-																<input type="hidden" name="id_user" class="form-control" value="<?= $user['id_user'] ?>">
-																<input type="text" name="nama" class="form-control" value="<?= $user['nama'] ?>">
+																<input type="hidden" name="id_user" class="form-control" value="<?= $userData['id_user'] ?>">
+																<input type="text" name="nama" class="form-control" value="<?= $userData['nama'] ?>">
 															</div>
 															<div class="form-group">
 																<label>Email</label>
-																<input type="email" name="email" class="form-control" value="<?= $user['email'] ?>">
+																<input type="email" name="email" class="form-control" value="<?= $userData['email'] ?>">
 															</div>
 															<div class="form-group">
 																<label>Username</label>
-																<input type="text" name="username" class="form-control" value="<?= $user['username'] ?>">
+																<input type="text" name="username" class="form-control" value="<?= $userData['username'] ?>">
 															</div>
 											
 															<div class="form-group">
 																<label>Phone</label>
-																<input type="text" name="phone" class="form-control" value="<?= $user['phone'] ?>">
+																<input type="text" name="phone" class="form-control" value="<?= $userData['phone'] ?>">
 															</div>
 															<div class="form-group">
 																<label>Roles</label>
@@ -260,7 +263,7 @@
 																<label class="form-control-label">Photo</label>
 																
 																<div>
-																	<img src="../assets/uploaded/profile/<?= $user['photo'] ?>" alt="Profile" class="img-thumbnail" width="100px">
+																	<img src="../assets/uploaded/profile/<?= $userData['photo'] ?>" alt="Profile" class="img-thumbnail" width="100px">
 																</div>
 																<div class="form-group">
 																<div class="custom-file">
