@@ -135,7 +135,7 @@ if  ($pg == 'tambah'){
         $ext = explode('.', $file1);
         $ext = end($ext);
 
-        if ($ukuran1 < 1044070) {
+        if ($ukuran1 < 1044070 && $ukuran2 < 1044070 && $ukuran3 < 1044070 && $ukuran4 < 1044070 && $ukuran5 < 1044070 && $ukuran6 < 1044070 && $ukuran7 < 1044070 && $ukuran8 < 1044070 && $ukuran9 < 1044070 && $ukuran10 < 1044070 && $ukuran11 < 1044070 && $ukuran12 < 1044070 && $ukuran13 < 1044070 && $ukuran14 < 1044070 ) {
             if (in_array($ext, $ektensi)) {
 
                 $location1='assets/uploaded/files/kb/' . $file1;
