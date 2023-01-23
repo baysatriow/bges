@@ -147,7 +147,8 @@ if ($_GET['action'] == "table_data"){
                     <div class="modal fade" id="editdata'.$no.'" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 				        <div class="modal-dialog" role="document">
 				            <div class="modal-content">
-				                <form id="form-edit'.$no.'">
+				                <form action="mod_pelanggan/crud_pelanggan.php?pg=update" method="POST">
+									<input type="hidden" name="id_pel" class="form-control" value="'.$value['id_pel'].'" required>
 				                    <div class="modal-header">
 				                        <h5 class="modal-title">Tambah Data Pelanggan</h5>
 				                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
