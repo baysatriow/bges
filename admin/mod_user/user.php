@@ -345,7 +345,7 @@
 
 	// Checklist Value Check
 	$('#ceksemua').change(function() {
-        $(this).parents('#basic-datatables:eq(0)').
+        $(this).parents('#basic-datatables1:eq(0)').
         find(':checkbox').attr('checked', this.checked);
     });
 

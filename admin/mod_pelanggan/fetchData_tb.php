@@ -64,6 +64,7 @@ if ($_GET['action'] == "table_data"){
             $nestedData['nomor_order'] = $value['nomor_order'];
             $nestedData['sid'] = $value['sid'];
             $nestedData['id_pel'] = $value['id_pel'];
+			$nestedData['check_id'] = '<table><input type="checkbox" name="cekpilih[]" class="cekpilih" id="cekpilih-'.$no.'" value="'.$value['id_pel'].'"></table>';
 
             $nestedData['aksi'] = '
             <div class="btn-group" role="group" aria-label="Basic example">

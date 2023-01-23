@@ -39,12 +39,14 @@
 					?>
 					<button class="btn btn-dark btn-xs" data-toggle="modal" data-target="#importdata"><i class="fas fa-upload"></i> Import</button>
 					<button class="btn btn-dark btn-xs" data-toggle="modal" data-target="#tambahdata"><i class="fas fa-plus-square"></i> Tambah</button>
+					<button type="button" id="btnhapus" class="btn btn-dark btn-xs"><i class="fas fa-trash    "></i> Hapus</button>
 					
 					<?php }
 					else if($user['level'] == "Office") {
 					?>
 					<button class="btn btn-dark btn-xs" data-toggle="modal" data-target="#importdata"><i class="fas fa-upload"></i> Import</button>
 					<button class="btn btn-dark btn-xs" data-toggle="modal" data-target="#tambahdata"><i class="fas fa-plus-square"></i> Tambah</button>
+					<button type="button" id="btnhapus" class="btn btn-dark btn-xs"><i class="fas fa-trash    "></i> Hapus</button>
 					
 					<?php	} ?>
 					<!-- Modal Area -->
@@ -161,7 +163,7 @@
 						<table id="basic-datatables" class="display table table-striped table-hover" >
 							<thead>
 								<tr>
-									<!-- <th><input type='checkbox' id='ceksemua'></th> -->
+									<th><input type='checkbox' id='ceksemua'></th>
 									<th>#</th>
 									<th>Nama Pelanggan</th>
 									<th>Alamat</th>
@@ -264,8 +266,53 @@
 	});
 
 	$('#ceksemua').change(function() {
-        $(this).parents('#basic-datatables1:eq(0)').
+        $(this).parents('#basic-datatables:eq(0)').
         find(':checkbox').attr('checked', this.checked);
+    });
+
+	$(function() {
+        $("#btnhapus").click(function() {
+            id_array = new Array();
+            i = 0;
+            $("input.cekpilih:checked").each(function() {
+                id_array[i] = $(this).val();
+                i++;
+            });
+			swal({
+				title: 'Are you sure?',
+				text: 'Akan menghapus data ini!',
+				icon: 'warning',
+				buttons: true,
+				dangerMode: true,
+			}).then((result) => {
+				if (result) {
+					$.ajax({
+						url: "mod_pelanggan/crud_pelanggan.php?pg=hapusdaftar",
+						data: "kode=" + id_array,
+						type: "POST",
+						success: function(respon) {
+							
+							if (respon == 1) {
+								$("input.cekpilih:checked").each(function() {
+									$(this).parent().parent().remove('.cekpilih').animate({
+										opacity: "hide"
+									}, "slow");
+								})
+							}
+							iziToast.error({
+								title: 'Success',
+								message: 'Data Berhasil dihapus',
+								position: 'topRight'
+							});
+						setTimeout(function() {
+								window.location.reload();
+							}, 2000);
+						}
+					});
+				}
+			})
+            return false;
+        })
     });
 
 	// Tampil Data 
@@ -280,6 +327,7 @@
 				"type": "POST"
 			},
 			columns:[
+				{"data": "check_id"},
 				{"data": "no"},
 				{"data": "nama_pel"},
 				{"data": "alamat"},
@@ -296,6 +344,10 @@
 				{"data": "sid"},
 				{"data": "aksi"},
 			],
+			"columnDefs": [ {
+				"targets": 0,
+				"orderable": false
+				} ]
 		});
 
 		// table.on('draw.dt', function () {
@@ -338,35 +390,6 @@
 
     });
 
-	$('#ceksemua').change(function() {
-        $(this).parents('#basic-datatables:eq(0)').
-        find(':checkbox').attr('checked', this.checked);
-    });
-    $(function() {
-        $("#btnhapus").click(function() {
-            id_array = new Array();
-            i = 0;
-            $("input.cekpilih:checked").each(function() {
-                id_array[i] = $(this).val();
-                i++;
-            });
-            $.ajax({
-                url: "mod_pelanggan/crud_pelanggan.php?pg=hapusdaftar",
-                data: "kode=" + id_array,
-                type: "POST",
-                success: function(respon) {
-                    if (respon == 1) {
-                        $("input.cekpilih:checked").each(function() {
-                            $(this).parent().parent().remove('.cekpilih').animate({
-                                opacity: "hide"
-                            }, "slow");
-                        })
-                    }
-                }
-            });
-            return false;
-        })
-    });
 	$('#form-tambah').submit(function(e) {
         e.preventDefault();
         $.ajax({

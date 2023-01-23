@@ -275,37 +275,48 @@
 <script>
 	// Checklist Box Delete Check
 	$('#ceksemua').change(function() {
-        $(this).parents('#basic-datatables:eq(0)').
+        $(this).parents('#basic-datatables1:eq(0)').
         find(':checkbox').attr('checked', this.checked);
     });
+	
     $(function() {
-        $("#btnhapus").click(function() {
-            id_array = new Array();
-            i = 0;
-            $("input.cekpilih:checked").each(function() {
-                id_array[i] = $(this).val();
-                i++;
-            });
-            $.ajax({
-                url: "mod_am/crud_am.php?pg=hapusdaftar",
-                data: "kode=" + id_array,
-                type: "POST",
-                success: function(respon) {
-					
-                    if (respon == 1) {
-                        $("input.cekpilih:checked").each(function() {
-                            $(this).parent().parent().remove('.cekpilih').animate({
-                                opacity: "hide"
-                            }, "slow");
-                        })
-                    }setTimeout(function() {
-                        window.location.reload();
-                    }, 2000);
-                }
-            });
-            return false;
-        })
-    });
+			$("#btnhapus").click(function() {
+				id_array = new Array();
+				i = 0;
+				$("input.cekpilih:checked").each(function() {
+					id_array[i] = $(this).val();
+					i++;
+				});
+				swal({
+					title: 'Are you sure?',
+					text: 'Akan menghapus data ini!',
+					icon: 'warning',
+					buttons: true,
+					dangerMode: true,
+				}).then((result) => {
+					if (result) {
+						$.ajax({
+							url: "mod_am/crud_am.php?pg=hapusdaftar",
+							data: "kode=" + id_array,
+							type: "POST",
+							success: function(respon) {
+								
+								if (respon == 1) {
+									$("input.cekpilih:checked").each(function() {
+										$(this).parent().parent().remove('.cekpilih').animate({
+											opacity: "hide"
+										}, "slow");
+									})
+								}setTimeout(function() {
+									window.location.reload();
+								}, 2000);
+							}
+						});
+					}
+				})
+				return false;
+			})
+		});
 
 	// Hapus with swal
 	$('#basic-datatables1').on('click', '.hapus', function() {
