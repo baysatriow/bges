@@ -28,34 +28,9 @@ if ($pg == 'ubah') {
             'phone'         => $_POST['phone'],
         ];
     }
+
     $id_user = $_POST['id_user'];
     $exec = update($koneksi, 'tb_user', $data, ['id_user' => $id_user]);
-    // $pw_lama = $_POST['password_lama'];
-    // $pw_baru = password_hash($_POST['password_baru']);
-    // $id = $_POST['id_user'];
-    // $data = [
-    //     'nama'          => $_POST['nama'],
-    //     'username'      => $_POST['username'],
-    //     'email'         => $_POST['email'],
-    //     'phone'         => $_POST['phone'],
-    // ];
-    // $where = [
-    //     'id_user' => $id,
-    // ];
-    // $exec = update($koneksi, 'tb_user', $data, $where);
-    // echo mysqli_error($koneksi);
-
-    // if ($exec) {
-    //     if (!password_verify($_POST['password_lama'], $user['password'])){
-    //         $data3 = [
-    //             'password'  => password_hash($_POST['password_baru'],PASSWORD_DEFAULT),
-    //         ];
-    //         $exec = update($koneksi, 'tb_user', $data3, $where);
-    //     } else {
-    //         echo "PW";
-    //     }
-    
-    // }
     
     if ($exec) {
         $ektensi = ['jpg', 'png'];

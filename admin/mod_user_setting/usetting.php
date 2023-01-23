@@ -128,7 +128,7 @@
                 });
             },
             success: function(data) {
-                if(data == 'SUKSES'){
+                if(data == 'ukuran'){
 					iziToast.warning({
                         title: 'Maaf!',
                         message: 'Ukuran File Terlalu Besar',
