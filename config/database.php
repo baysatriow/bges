@@ -11,6 +11,8 @@
 // $password = "n9=n+qEfH~ge";
 // $database = "smklampu_a_sim";
 
+
+//Test
 // Server Online 2
 $server   = "localhost";
 $username = "root";
