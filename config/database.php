@@ -12,7 +12,7 @@
 // $database = "smklampu_a_sim";
 
 
-//Test 2
+//Test 2222
 // Server Online 2
 $server   = "localhost";
 $username = "root";
