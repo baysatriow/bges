@@ -244,12 +244,12 @@
 										?>
 										<span class="badge badge-danger">Belum Upload</span>
 										<?php }else{?>
-											<a href="#" data-toggle="modal" data-target="#detailkb&id=<?= enkripsi($kontrak['id_kontrak']) ?>"><span class="badge badge-success">Sudah Upload</span></a>
+											<a href="../assets/uploaded/files/kb/<?= $kontrak['kb']?>" data-toggle="modal" data-target="#detailkb=<?= $no ?>"><span class="badge badge-success">Sudah Upload</span></a>
 										<?php } ?>
 										
 									</td>
 										<!-- Modal Detail KB -->
-										<div class="modal fade bd-example-modal-lg" id="detailkb&id=<?= enkripsi($kontrak['id_kontrak']) ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+										<div class="modal fade bd-example-modal-lg" id="detailkb=<?= $no ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<!-- Desc -->
@@ -283,11 +283,11 @@
 										?>
 										<span class="badge badge-danger">Belum Upload</span>
 										<?php }else{?>
-											<a href="#" data-toggle="modal" data-target="#detailba_ren&id=<?= enkripsi($kontrak['id_kontrak']) ?>"><span class="badge badge-success">Sudah Upload</span></a>
+											<a href="#" data-toggle="modal" data-target="#detailba_ren=<?= $no ?>"><span class="badge badge-success">Sudah Upload</span></a>
 										<?php } ?>
 									</td>
 										<!-- Modal Detail BA Ren -->
-										<div class="modal fade bd-example-modal-lg" id="detailba_ren&id=<?= enkripsi($kontrak['id_kontrak']) ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+										<div class="modal fade bd-example-modal-lg" id="detailba_ren=<?= $no ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<!-- Desc -->
@@ -318,11 +318,11 @@
 										?>
 										<span class="badge badge-danger">Belum Upload</span>
 										<?php }else{?>
-											<a href="#" data-toggle="modal" data-target="#detailba_do&id=<?= enkripsi($kontrak['id_kontrak']) ?>"><span class="badge badge-success">Sudah Upload</span></a>
+											<a href="#" data-toggle="modal" data-target="#detailba_do=<?= $no ?>"><span class="badge badge-success">Sudah Upload</span></a>
 										<?php } ?>
 									</td>
 										<!-- Modal Detail BA DO -->
-										<div class="modal fade bd-example-modal-lg" id="detailba_do&id=<?= enkripsi($kontrak['id_kontrak']) ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+										<div class="modal fade bd-example-modal-lg" id="detailba_do=<?= $no ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<!-- Desc -->
@@ -353,11 +353,11 @@
 										?>
 										<span class="badge badge-danger">Belum Upload</span>
 										<?php }else{?>
-											<a href="#" data-toggle="modal" data-target="#detailbaso&id=<?= enkripsi($kontrak['id_kontrak']) ?>"><span class="badge badge-success">Sudah Upload</span></a>
+											<a href="#" data-toggle="modal" data-target="#detailbaso=<?= $no ?>"><span class="badge badge-success">Sudah Upload</span></a>
 										<?php } ?>
 									</td>
 										<!-- Modal Detail BASO-->
-										<div class="modal fade bd-example-modal-lg" id="detailbaso&id=<?= enkripsi($kontrak['id_kontrak']) ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+										<div class="modal fade bd-example-modal-lg" id="detailbaso=<?= $no ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<!-- Desc -->
@@ -388,11 +388,11 @@
 										?>
 										<span class="badge badge-danger">Belum Upload</span>
 										<?php }else{?>
-											<a href="#" data-toggle="modal" data-target="#detailba_pen&id=<?= enkripsi($kontrak['id_kontrak']) ?>"><span class="badge badge-success">Sudah Upload</span></a>
+											<a href="#" data-toggle="modal" data-target="#detailba_pen=<?= $no ?>"><span class="badge badge-success">Sudah Upload</span></a>
 										<?php } ?>
 									</td>
 										<!-- Modal Detail BA Penjelasan-->
-										<div class="modal fade bd-example-modal-lg" id="detailba_pen&id=<?= enkripsi($kontrak['id_kontrak']) ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+										<div class="modal fade bd-example-modal-lg" id="detailba_pen=<?= $no ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<!-- Desc -->
@@ -423,11 +423,11 @@
 										?>
 										<span class="badge badge-danger">Belum Upload</span>
 										<?php }else{?>
-											<a href="#" data-toggle="modal" data-target="#detailpo&id=<?= enkripsi($kontrak['id_kontrak']) ?>"><span class="badge badge-success">Sudah Upload</span></a>
+											<a href="#" data-toggle="modal" data-target="#detailpo=<?= $no ?>"><span class="badge badge-success">Sudah Upload</span></a>
 										<?php } ?>
 									</td>
 										<!-- Modal Detail P0-P8-->
-										<div class="modal fade bd-example-modal-lg" id="detailpo&id=<?= enkripsi($kontrak['id_kontrak']) ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+										<div class="modal fade bd-example-modal-lg" id="detailpo=<?= $no ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<!-- Desc -->
@@ -458,11 +458,11 @@
 										?>
 										<span class="badge badge-danger">Belum Upload</span>
 										<?php }else{?>
-											<a href="#" data-toggle="modal" data-target="#detailkl&id=<?= enkripsi($kontrak['id_kontrak']) ?>"><span class="badge badge-success">Sudah Upload</span></a>
+											<a href="#" data-toggle="modal" data-target="#detailkl=<?= $no ?>"><span class="badge badge-success">Sudah Upload</span></a>
 										<?php } ?>
 									</td>
 										<!-- Modal Detail KL/SP/WO -->
-										<div class="modal fade bd-example-modal-lg" id="detailkl&id=<?= enkripsi($kontrak['id_kontrak']) ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+										<div class="modal fade bd-example-modal-lg" id="detailkl=<?= $no ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<!-- Desc -->
@@ -493,11 +493,11 @@
 										?>
 										<span class="badge badge-danger">Belum Upload</span>
 										<?php }else{?>
-											<a href="#" data-toggle="modal" data-target="#detailsph&id=<?= enkripsi($kontrak['id_kontrak']) ?>"><span class="badge badge-success">Sudah Upload</span></a>
+											<a href="#" data-toggle="modal" data-target="#detailsph=<?= $no ?>"><span class="badge badge-success">Sudah Upload</span></a>
 										<?php } ?>
 									</td>
 										<!-- Modal Detail SPH-->
-										<div class="modal fade bd-example-modal-lg" id="detailsph&id=<?= enkripsi($kontrak['id_kontrak']) ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+										<div class="modal fade bd-example-modal-lg" id="detailsph=<?= $no ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<!-- Desc -->
@@ -528,11 +528,11 @@
 										?>
 										<span class="badge badge-danger">Belum Upload</span>
 										<?php }else{?>
-											<a href="#" data-toggle="modal" data-target="#detailskm&id=<?= enkripsi($kontrak['id_kontrak']) ?>"><span class="badge badge-success">Sudah Upload</span></a>
+											<a href="#" data-toggle="modal" data-target="#detailskm=<?= $no ?>"><span class="badge badge-success">Sudah Upload</span></a>
 										<?php } ?>
 									</td>
 										<!-- Modal Detail SKM-->
-										<div class="modal fade bd-example-modal-lg" id="detailskm&id=<?= enkripsi($kontrak['id_kontrak']) ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+										<div class="modal fade bd-example-modal-lg" id="detailskm=<?= $no ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<!-- Desc -->
@@ -563,11 +563,11 @@
 										?>
 										<span class="badge badge-danger">Belum Upload</span>
 										<?php }else{?>
-											<a href="#" data-toggle="modal" data-target="#detailbaa&id=<?= enkripsi($kontrak['id_kontrak']) ?>"><span class="badge badge-success">Sudah Upload</span></a>
+											<a href="#" data-toggle="modal" data-target="#detailbaa=<?= $no ?>"><span class="badge badge-success">Sudah Upload</span></a>
 										<?php } ?>
 									</td>
 										<!-- Modal Detail BAA-->
-										<div class="modal fade bd-example-modal-lg" id="detailbaa&id=<?= enkripsi($kontrak['id_kontrak']) ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+										<div class="modal fade bd-example-modal-lg" id="detailbaa=<?= $no ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<!-- Desc -->
@@ -598,11 +598,11 @@
 										?>
 										<span class="badge badge-danger">Belum Upload</span>
 										<?php }else{?>
-											<a href="#" data-toggle="modal" data-target="#detailbai&id=<?= enkripsi($kontrak['id_kontrak']) ?>"><span class="badge badge-success">Sudah Upload</span></a>
+											<a href="#" data-toggle="modal" data-target="#detailbai=<?= $no ?>"><span class="badge badge-success">Sudah Upload</span></a>
 										<?php } ?>
 									</td>
 										<!-- Modal Detail BAI-->
-										<div class="modal fade bd-example-modal-lg" id="detailbai&id=<?= enkripsi($kontrak['id_kontrak']) ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+										<div class="modal fade bd-example-modal-lg" id="detailbai=<?= $no ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<!-- Desc -->
@@ -633,11 +633,11 @@
 										?>
 										<span class="badge badge-danger">Belum Upload</span>
 										<?php }else{?>
-											<a href="#" data-toggle="modal" data-target="#detailbaut&id=<?= enkripsi($kontrak['id_kontrak']) ?>"><span class="badge badge-success">Sudah Upload</span></a>
+											<a href="#" data-toggle="modal" data-target="#detailbaut=<?= $no ?>"><span class="badge badge-success">Sudah Upload</span></a>
 										<?php } ?>
 									</td>
 										<!-- Modal Detail BAUT-->
-										<div class="modal fade bd-example-modal-lg" id="detailbaut&id=<?= enkripsi($kontrak['id_kontrak']) ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+										<div class="modal fade bd-example-modal-lg" id="detailbaut=<?= $no ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<!-- Desc -->
@@ -668,11 +668,11 @@
 										?>
 										<span class="badge badge-danger">Belum Upload</span>
 										<?php }else{?>
-											<a href="#" data-toggle="modal" data-target="#detailbast&id=<?= enkripsi($kontrak['id_kontrak']) ?>"><span class="badge badge-success">Sudah Upload</span></a>
+											<a href="#" data-toggle="modal" data-target="#detailbast=<?= $no ?>"><span class="badge badge-success">Sudah Upload</span></a>
 										<?php } ?>
 									</td>
 										<!-- Modal Detail BAST-->
-										<div class="modal fade bd-example-modal-lg" id="detailbast&id=<?= enkripsi($kontrak['id_kontrak']) ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+										<div class="modal fade bd-example-modal-lg" id="detailbast=<?= $no ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<!-- Desc -->
@@ -703,11 +703,11 @@
 										?>
 										<span class="badge badge-danger">Belum Upload</span>
 										<?php }else{?>
-											<a href="#" data-toggle="modal" data-target="#detailbard&id=<?= enkripsi($kontrak['id_kontrak']) ?>"><span class="badge badge-success">Sudah Upload</span></a>
+											<a href="#" data-toggle="modal" data-target="#detailbard=<?= $no ?>"><span class="badge badge-success">Sudah Upload</span></a>
 										<?php } ?>
 									</td>
 										<!-- Modal Detail BARD-->
-										<div class="modal fade bd-example-modal-lg" id="detailbard&id=<?= enkripsi($kontrak['id_kontrak']) ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+										<div class="modal fade bd-example-modal-lg" id="detailbard=<?= $no ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">
 													<!-- Desc -->
@@ -734,12 +734,12 @@
 										<!-- Modal End -->
 									<td>
 										<div class="btn-group" role="group" aria-label="Basic example">
-											<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#detail&id=<?= enkripsi($kontrak['id_kontrak']) ?>"><i class="fas fa-info-circle"></i></button>
+											<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#detail<?= $no ?>"><i class="fas fa-info-circle"></i></button>
 											<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#editdata"><i class="fas fa-edit"></i></button>
 											<button type='button' class='hapus btn btn-danger btn-xs'  data-id="<?= $kontrak['id_kontrak'] ?>" >Hapus</button>
 										</div>
 										<!-- Modal  Details Start -->
-										<div class="modal fade bd-example-modal-lg" id="detail&id=<?= enkripsi($kontrak['id_kontrak']) ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+										<div class="modal fade bd-example-modal-lg" id="detail<?= $no ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 									        <div class="modal-dialog" role="document">
 									            <div class="modal-content">
 									            	<!-- Desc -->
@@ -1057,7 +1057,13 @@
             contentType: false,
             cache: false,
             success: function(data) {
-                if (data == 'OK') {
+                if(data == 'Ukuran'){
+					iziToast.warning({
+                        title: 'Maaf!',
+                        message: 'Ukuran File Terlalu Besar',
+                        position: 'topRight'
+                    });
+				}else {
                     iziToast.success({
                         title: 'Mantap!',
                         message: 'Data Berhasil ditambahkan',
@@ -1066,19 +1072,6 @@
                     setTimeout(function() {
                         window.location.reload();
                     }, 2000);
-                    $('#tambahdata').modal('hide');
-                } else if(data == 'Ukuran'){
-					iziToast.warning({
-                        title: 'Maaf!',
-                        message: 'Ukuran File Terlalu Besar',
-                        position: 'topRight'
-                    });
-				}else {
-                    iziToast.error({
-                        title: 'Maaf!',
-                        message: 'Data Gagal ditambahkan',
-                        position: 'topRight'
-                    });
                 }
                 //$('#bodyreset').load(location.href + ' #bodyreset');
             }

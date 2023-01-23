@@ -135,7 +135,7 @@ if  ($pg == 'tambah'){
         $ext = explode('.', $file1);
         $ext = end($ext);
 
-        if ($ukuran1 || $ukuran2 < 1044070) {
+        if ($ukuran1 < 1044070) {
             if (in_array($ext, $ektensi)) {
 
                 $location1='assets/uploaded/files/kb/' . $file1;
@@ -198,8 +198,6 @@ if  ($pg == 'tambah'){
                     move_uploaded_file($file_tmp12, '../../' . $location12);
                     move_uploaded_file($file_tmp13, '../../' . $location13);
                     move_uploaded_file($file_tmp14, '../../' . $location14);
-                    
-                    echo "OK";
                 }
             }
         }else{
