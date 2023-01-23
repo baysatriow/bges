@@ -166,6 +166,71 @@
 								</tr>
 							</thead>
 						</table>
+						<tbody>
+							<!-- Edit Script Start -->
+							<script>
+											$('#form-edit<?= $no ?>').submit(function(e) {
+												e.preventDefault();
+												$.ajax({
+													type: 'POST',
+													url: 'mod_am/crud_am.php?pg=edit',
+													data: new FormData(this),
+													processData: false,
+													contentType: false,
+													cache: false,
+													beforeSend: function() {
+														$('#btnsimpan').prop('disabled', true);
+													},
+													success: function(data) {
+														var json = data;
+														$('#btnsimpan').prop('disabled', false);
+														if (json == 'ok') {
+															iziToast.success({
+																title: 'Terima Kasih!',
+																message: 'Data berhasil disimpan',
+																position: 'topCenter'
+															});
+
+														} else {
+															iziToast.info({
+																title: 'Sukses',
+																message: 'Data berhasil disimpan',
+																position: 'topCenter'
+															});
+														}
+														setTimeout(function() {
+															window.location.reload();
+														}, 2000);
+														//$('#bodyreset').load(location.href + ' #bodyreset');
+													}
+												});
+												return false;
+											});
+											// Hapus with swal
+											$('#basic-datatables').on('click', '.edit', function() {
+													var id = $(this).data('id');
+													$.ajax({
+														url: 'mod_pelanggan/crud_pelanggan.php?pg=edit',
+														type: "POST",
+														data: 'id_pel=' + id,
+														processData: false,
+														contentType: false,
+														cache: false,
+														success: function(data) {
+															iziToast.error({
+																title: 'Success',
+																message: 'Data Berhasil dihapus',
+																position: 'topRight'
+															});
+															setTimeout(function() {
+																window.location.reload();
+															}, 2000);
+														}
+													});
+												});
+										</script>
+										<!-- Script End -->
+						</tbody>
 					</div>
 					<!-- End -->
 				</div>
@@ -190,9 +255,31 @@
 	// Tampil Data 
 	$(document).ready(function(){
 		$('#basic-datatables').DataTable({
-			"processing": true,
-			"serverSide": true,
-			"ajax": "mod_pelanggan/fetchData.php",
+			processing: true,
+			serverSide: true,
+			// "ajax": "mod_pelanggan/fetchData.php",
+			ajax: {
+				"url": "mod_pelanggan/fetchData_tb.php?action=table_data",
+				"dataType": "json",
+				"type": "POST"
+			},
+			columns:[
+				{"data": "no"},
+				{"data": "nama_pel"},
+				{"data": "alamat"},
+				{"data": "phone"},
+				{"data": "layanan"},
+				{"data": "ca"},
+				{"data": "ca_site"},
+				{"data": "ca_nipnas"},
+				{"data": "ba"},
+				{"data": "ba_site"},
+				{"data": "nomor_quote"},
+				{"data": "nomor_aggre"},
+				{"data": "nomor_order"},
+				{"data": "sid"},
+				{"data": "aksi"},
+			],
 		});
 
 		// table.on('draw.dt', function () {
@@ -202,6 +289,39 @@
 		// 		});
 		// 	});
 	});
+
+	// Hapus with swal
+	$('#basic-datatables').on('click', '.hapus', function() {
+        var id = $(this).data('id');
+        console.log(id);
+        swal({
+            title: 'Are you sure?',
+            text: 'Akan menghapus data ini!',
+            icon: 'warning',
+            buttons: true,
+            dangerMode: true,
+        }).then((result) => {
+            if (result) {
+                $.ajax({
+                    url: 'mod_pelanggan/crud_pelanggan.php?pg=hapus',
+                    method: "POST",
+                    data: 'id_pel=' + id,
+                    success: function(data) {
+                        iziToast.error({
+                            title: 'Success',
+                            message: 'Data Berhasil dihapus',
+                            position: 'topRight'
+                        });
+                        setTimeout(function() {
+                            window.location.reload();
+                        }, 2000);
+                    }
+                });
+            }
+        })
+
+    });
+
 	$('#ceksemua').change(function() {
         $(this).parents('#basic-datatables:eq(0)').
         find(':checkbox').attr('checked', this.checked);

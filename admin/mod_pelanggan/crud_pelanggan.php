@@ -8,6 +8,74 @@ session_start();
 if (!isset($_SESSION['id_user'])) {
     die('Anda tidak diijinkan mengakses langsung');
 }
+if($pg == 'tampil'){
+
+    $columns = array(
+        0  => 'id_pel', 
+        1  => 'nama_pel',         
+        2  => 'alamat',                   
+        3  => 'phone',        
+        4  => 'layanan',              
+        5  => 'ca',                   
+        6  => 'ca_site',           
+        7  => 'ca_nipnas',      
+        8  => 'ba',   
+        9  => 'ba_site',   
+       10  => 'nomor_quote',     
+       11  => 'nomor_aggre',            
+       12  => 'nomor_order',         
+       13  => 'sid',
+    );
+
+    $querycount = $db->query("SELECT count(id_pel) as jumlah FROM tb_pelanggan");
+    $datacount = $querycount->fetch_array();
+
+    $totalData = $datacount['jumlah'];
+
+    $totalFiltered = $totalData;
+
+    $limit = $_POST['length'];
+    $start = $_POST['start'];
+    $order = $columns[$_POST['order']['0']['column']];
+    $dir = $_POST['order']['0']['dir'];
+
+    if (empty($_POST['search']['value'])) {
+        $query = $db->query("SELECT id_pel,nama_pel,alamat,phone,layanan FROM tb_pelanggan ORDER BY $order $dir LIMIT $limit OFFSET $start");
+
+    } else {
+        $search = $_POST['search']['value'];
+        $query = $db->query("SELECT id_pel,nama_pel,alamat,phone,layanan FROM tb_pelanggan WHERE nama_pel LIKE '%$search%' OR layanan LIKE '%$search%' ORDER BY $order $dir LIMIT $limit OFFSET $start");
+
+        $querycount = $db->query("SELECT count(id_pel) as jumlah FROM tb_pelanggan WHERE nama_pel LIKE '%$search%' OR layanan LIKE '%$search%'");
+
+        $datacount = $querycount->fetch_array();
+        $totalFiltered = $datacount['jumlah'];
+    }
+
+    $data = array();
+    if (!empty($query)) {
+        $no = $start + 1;
+        while ($value = $query->fetch_array()) {
+            $nestedData['no'] = $no;
+            $nestedData['nama_pel'] = $value['nama_pel'];
+            $nestedData['alamat'] = $value['alamat'];
+            $nestedData['phone'] = $value['phone'];
+            $nestedData['layanan'] = $value['layanan'];
+            $nestedData['aksi'] = '';
+            $data[] = $nestedData;
+            $no++;
+        }
+    }
+
+    $json_data = [
+        "draw"            => intval($_POST['draw']),
+        "recordsTotal"    => intval($totalData),
+        "recordsFiltered" => intval($totalFiltered),
+        "data"            => $data
+    ];
+
+    echo json_encode($json_data);
+}
 if ($pg == 'ubah') {
     $status = (isset($_POST['status'])) ? 1 : 0;
     $data = [
@@ -37,10 +105,6 @@ if ($pg == 'tambah') {
     ];
     $exec = insert($koneksi, 'tb_pelanggan', $data);
     echo $exec;
-}
-if ($pg == 'hapus') {
-    $npsn = $_POST['npsn'];
-    delete($koneksi, 'sekolah', ['npsn' => $npsn]);
 }
 if ($pg == 'import') {
     if (isset($_FILES['file']['name'])) {
@@ -96,6 +160,19 @@ if ($pg == 'import') {
         }
     } else {
         echo "gagal";
+    }
+}
+
+// Hapus Per Record
+if ($pg == 'hapus') {
+
+    $id=$_POST['id_pel'];
+    // $hapus = mysql_query("delete from tb_am where id=".$id." ");
+    $query = mysqli_query($koneksi, "DELETE from tb_pelanggan where id_pel=".$id." ");
+    if($query) {
+        echo "OK";
+    } else {
+        // 
     }
 }
 
