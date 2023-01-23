@@ -38,7 +38,8 @@ if (isset($_SESSION['id_user'])) {
 			}
 		});
 	</script>
-
+	<!-- Custom -->
+	<link rel="stylesheet" href="../assets/css/custom.css">
 	<!-- CSS Files -->
 	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../assets/css/atlantis.css">
@@ -46,10 +47,10 @@ if (isset($_SESSION['id_user'])) {
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 	<!-- CSS Just for demo purpose, don't include it in your project -->
 	<link rel="stylesheet" href="../assets/css/demo.css">
-	<!-- Custom -->
-	<link rel="stylesheet" href="../assets/css/custom.css">
+
 	<!-- CSS TOASTR -->
     <link rel="stylesheet" href="../assets/modules/izitoast/css/iziToast.min.css">
+	
     <link rel="stylesheet" href="../assets/modules/select2/dist/css/select2.min.css">
 
     <script src="../assets/js/core/jquery.3.2.1.min.js"></script>
@@ -89,11 +90,24 @@ if (isset($_SESSION['id_user'])) {
 			<!-- Navbar Header -->
 			<nav class="navbar navbar-header navbar-expand-lg" data-background-color="red2">
 				<div class="container-fluid">
+					<!-- Search For Tables -->
+				<div class="collapse" id="search-nav">
+					<form class="navbar-left navbar-form nav-search nav-search-round mr-md-3">
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<button type="submit" class="btn btn-search pr-1">
+									<i class="fa fa-search search-icon"></i>
+								</button>
+							</div>
+							<input id="search-filter" class="form-control" placeholder="Search...." type="text"/>
+						</div>
+					</form>
+				</div>
 					<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
 						<li class="nav-item dropdown hidden-caret">
 							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
 								<div class="avatar-sm">
-									<img src="../assets/img/logo.png" alt="..." class="avatar-img rounded-circle">
+									<img src="../assets/img/logo.png" alt="..." class="avatar-img rounded-circle" onchange="s">
 								</div>
 							</a>
 							<ul class="dropdown-menu dropdown-user animated fadeIn">

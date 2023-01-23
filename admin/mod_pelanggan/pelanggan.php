@@ -29,26 +29,29 @@
 		}
 	?>
 
-	
+	<style>
+		.dataTables_filter {
+		visibility: hidden;
+		}
+	</style>
 	<div class="row">
 		<div class="col-md-12">
 			<div class="card">
 				<div class="card-header">
 				<?php 
-					if($user['level'] == "Admin"){
+					if($user['level'] == "Admin" OR $user['level'] == "Office"){
 					?>
 					<button class="btn btn-dark btn-xs" data-toggle="modal" data-target="#importdata"><i class="fas fa-upload"></i> Import</button>
 					<button class="btn btn-dark btn-xs" data-toggle="modal" data-target="#tambahdata"><i class="fas fa-plus-square"></i> Tambah</button>
 					<button type="button" id="btnhapus" class="btn btn-dark btn-xs"><i class="fas fa-trash    "></i> Hapus</button>
-					
-					<?php }
-					else if($user['level'] == "Office") {
-					?>
-					<button class="btn btn-dark btn-xs" data-toggle="modal" data-target="#importdata"><i class="fas fa-upload"></i> Import</button>
-					<button class="btn btn-dark btn-xs" data-toggle="modal" data-target="#tambahdata"><i class="fas fa-plus-square"></i> Tambah</button>
-					<button type="button" id="btnhapus" class="btn btn-dark btn-xs"><i class="fas fa-trash    "></i> Hapus</button>
-					
-					<?php	} ?>
+					<select id="search-layanan" class="form-control" type="text">
+						<option value="PSB">PSB</option>
+						<option value="saab">Saab</option>
+						<option value="mercedes">Mercedes</option>
+						<option value="audi">Audi</option>
+					</select>
+					<input id="search-1" name="layanan" class="form-control" placeholder="Search...." type="text"/>
+					<?php } ?>
 					<!-- Modal Area -->
 					<!-- Modal Import -->
 				    <div class="modal fade" id="importdata" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
@@ -258,6 +261,8 @@
 </div>
 <!-- Page Script -->
 <script>
+	
+
 
 	// Custom File Value
 	$(".custom-file-input").on("change", function() {
@@ -314,15 +319,23 @@
             return false;
         })
     });
-
+	// Testing
+	// $(document).ready(function(){
+	// var table = $('#basic-datatables').DataTable();
+	// //DataTable custom search field
+	// 	$('#custom-filter').keyup( function() {
+	// 	table.search( this.value ).draw();
+	// 	} );
+	// });
 	// Tampil Data 
 	$(document).ready(function(){
-		$('#basic-datatables').DataTable({
+		var table = $('#basic-datatables').DataTable({
 			processing: true,
 			serverSide: true,
+			// "searching": false,
 			// "ajax": "mod_pelanggan/fetchData.php",
 			ajax: {
-				"url": "mod_pelanggan/fetchData_tb.php?action=table_data",
+				"url": "mod_pelanggan/crud_pelanggan.php?pg=tampil",
 				"dataType": "json",
 				"type": "POST"
 			},
@@ -346,10 +359,16 @@
 			],
 			"columnDefs": [ {
 				"targets": 0,
-				"orderable": false
+				"orderable": false,
 				} ]
 		});
-
+		// Filter Search
+		$('#search-filter').keyup( function() {
+		table.search( this.value ).draw();
+		} );
+		$('#search-layanan').keyup( function() {
+		table.search( this.value ).draw();
+		} );
 		// table.on('draw.dt', function () {
 		// 		var info = table.page.info();
 		// 		table.column(, { search: 'applied', order: 'applied', page: 'applied' }).nodes().each(function (cell, i) {
@@ -357,7 +376,7 @@
 		// 		});
 		// 	});
 	});
-
+	
 	// Hapus with swal
 	$('#basic-datatables').on('click', '.hapus', function() {
         var id = $(this).data('id');
