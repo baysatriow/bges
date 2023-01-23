@@ -185,3 +185,26 @@ if ($pg == 'hapusdaftar') {
         echo 0;
     }
 }
+
+if ($pg == 'update') {
+    $id = $_POST['id_pel'];
+    $data = [
+        'nama_pel'          => $_POST['nama_pel'],
+        'layanan'           => $_POST['layanan'],
+        'ca'                => $_POST['ca'],
+        'ca_site'           => $_POST['ca_site'],
+        'ca_nipnas'         => $_POST['ca_nipnas'],
+        'ba'                => $_POST['ba'],
+        'ba_site'           => $_POST['ba_site'],
+        'nomor_quote'       => $_POST['nomor_quote'],
+        'nomor_aggre'       => $_POST['nomor_aggre'],
+        'nomor_order'       => $_POST['nomor_order'],
+        'sid'               => $_POST['sid'],
+        'alamat'            => $_POST['alamat'],
+        'phone'             => $_POST['phone'],
+    ];
+    $exec = update($koneksi, 'tb_pelanggan', $data, ['id_pel' => $id]);
+
+    echo $exec;
+
+}

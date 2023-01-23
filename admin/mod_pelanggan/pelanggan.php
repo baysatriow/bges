@@ -15,7 +15,21 @@
 				<a href="?pg=pelanggan">Data Pelanggan</a>
 			</li>
 		</ul>
+		
 	</div>
+
+	<!-- Notif -->
+	<?php 
+		if(isset($_GET['pesan'])){
+			if($_GET['pesan'] == "sukses"){
+				echo '<div class="alert alert-success">
+						Data Berhasil Di Update
+					</div>';
+			}
+		}
+	?>
+
+	
 	<div class="row">
 		<div class="col-md-12">
 			<div class="card">
@@ -169,43 +183,45 @@
 						<tbody>
 							<!-- Edit Script Start -->
 							<script>
-											$('#form-edit<?= $no ?>').submit(function(e) {
-												e.preventDefault();
-												$.ajax({
-													type: 'POST',
-													url: 'mod_am/crud_am.php?pg=edit',
-													data: new FormData(this),
-													processData: false,
-													contentType: false,
-													cache: false,
-													beforeSend: function() {
-														$('#btnsimpan').prop('disabled', true);
-													},
-													success: function(data) {
-														var json = data;
-														$('#btnsimpan').prop('disabled', false);
-														if (json == 'ok') {
-															iziToast.success({
-																title: 'Terima Kasih!',
-																message: 'Data berhasil disimpan',
-																position: 'topCenter'
-															});
-
-														} else {
-															iziToast.info({
-																title: 'Sukses',
-																message: 'Data berhasil disimpan',
-																position: 'topCenter'
-															});
-														}
-														setTimeout(function() {
-															window.location.reload();
-														}, 2000);
-														//$('#bodyreset').load(location.href + ' #bodyreset');
-													}
+								$('#form-edit<?= $no ?>').submit(function(e) {
+									e.preventDefault();
+									$.ajax({
+										type: 'POST',
+										url: 'mod_am/crud_am.php?pg=edit',
+										data: new FormData(this),
+										processData: false,
+										contentType: false,
+										cache: false,
+										beforeSend: function() {
+											$('#btnsimpan').prop('disabled', true);
+										},
+										success: function(data) {
+											var json = data;
+											$('#btnsimpan').prop('disabled', false);
+											if (json == 'ok') {
+												iziToast.success({
+													title: 'Terima Kasih!',
+													message: 'Data berhasil disimpan',
+													position: 'topCenter'
 												});
-												return false;
-											});
+
+											} else {
+												iziToast.info({
+													title: 'Sukses',
+													message: 'Data berhasil disimpan',
+													position: 'topCenter'
+												});
+											}
+											setTimeout(function() {
+												window.location.reload();
+											}, 2000);
+											//$('#bodyreset').load(location.href + ' #bodyreset');
+										}
+									});
+									return false;
+								});
+
+								
 											// Hapus with swal
 											$('#basic-datatables').on('click', '.edit', function() {
 													var id = $(this).data('id');
