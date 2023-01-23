@@ -209,7 +209,7 @@
 								<tr>
 									<th><input type='checkbox' id='ceksemua'></th>
 									<th>#</th>
-									<th>No Order</th>
+									<th nowrap>No Order Kontrak</th>
 									<th>KB/SPK</th>
 									<th>BA Renewals</th>
 									<th>BA DO</th>

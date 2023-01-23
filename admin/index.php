@@ -14,6 +14,8 @@ if (isset($_SESSION['id_user'])) {
   $total_complete  = $status_count[0];
   $pelanggan_count = mysqli_fetch_array(mysqli_query($koneksi, "select count(1) from tb_pelanggan"));
   $total_pelanggan = $pelanggan_count[0];
+  $kontrak_count   = mysqli_fetch_array(mysqli_query($koneksi, "select count(1) from tb_kontrak"));
+  $total_kontrak   = $kontrak_count[0];
   $user_setting    = mysqli_fetch_array(mysqli_query($koneksi, "select * from tb_user where id_user='$_SESSION[id_user]'"));
   $order		   = mysqli_fetch_array(mysqli_query($koneksi, "select * from tb_order"));
 ?>
@@ -44,6 +46,8 @@ if (isset($_SESSION['id_user'])) {
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 	<!-- CSS Just for demo purpose, don't include it in your project -->
 	<link rel="stylesheet" href="../assets/css/demo.css">
+	<!-- Custom -->
+	<link rel="stylesheet" href="../assets/css/custom.css">
 	<!-- CSS TOASTR -->
     <link rel="stylesheet" href="../assets/modules/izitoast/css/iziToast.min.css">
     <link rel="stylesheet" href="../assets/modules/select2/dist/css/select2.min.css">

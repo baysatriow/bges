@@ -1,16 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,700&display=swap");
 
 body {
-	font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
-
-#watermark{
-    margin: auto;
-    top : 5px;
-    left : 50%;
-    width: 100%;
-    display:block;
-    position : absolute;
-    opacity: 0.2;
-    filter: alpha(opacity=20); 
+.card-link {
+  text-decoration: none;
 }
+.card-count:hover {
+  text-decoration: none;
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+}
+/* 
+#watermark {
+  margin: auto;
+  top: 5px;
+  left: 50%;
+  width: 100%;
+  display: block;
+  position: absolute;
+  opacity: 0.2;
+  filter: alpha(opacity=20);
+} */
