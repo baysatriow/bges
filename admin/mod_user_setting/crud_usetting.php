@@ -7,31 +7,42 @@ if (!isset($_SESSION['id_user'])) {
     die('Anda tidak diijinkan mengakses langsung');
 }
 
-// $query = mysqli_query($koneksi, "select * from tb_user where id_user='$id'");
-// $user = mysqli_fetch_array($query);
+
 
 if ($pg == 'ubah') {
 
-    if ($_POST['password_baru'] <> "") {
-        $data = [
-            'nama'          => $_POST['nama'],
-            'username'      => $_POST['username'],
-            'email'         => $_POST['email'],
-            'phone'         => $_POST['phone'],
-            'password'      => password_hash($_POST['password_baru'], PASSWORD_DEFAULT),
-        ];
+    $username = mysqli_real_escape_string($koneksi, $_POST['username']);
+    $pw_lama = mysqli_real_escape_string($koneksi, $_POST['password_lama']);
+    $password= mysqli_fetch_array(mysqli_query($koneksi, "select * from tb_user where username='$username'"));
+
+    if ($_POST['password_lama'] <> ''){
+
+
+        if (password_verify($pw_lama, $password['password'])) {
+            $data1 = [
+                'nama'          => $_POST['nama'],
+                'username'      => $_POST['username'],
+                'email'         => $_POST['email'],
+                'phone'         => $_POST['phone'],
+                'password'      => password_hash($_POST['password_baru'], PASSWORD_DEFAULT),
+            ];
+            $id_user = $_POST['id_user'];
+            $exec = update($koneksi, 'tb_user', $data1, ['id_user' => $id_user]);
+        } else {
+            echo "PW";
+        }
+
     } else {
-        $data = [
+        $data2 = [
             'nama'          => $_POST['nama'],
             'username'      => $_POST['username'],
             'email'         => $_POST['email'],
             'phone'         => $_POST['phone'],
         ];
+        $id_user = $_POST['id_user'];
+        $exec = update($koneksi, 'tb_user', $data2, ['id_user' => $id_user]);
     }
 
-    $id_user = $_POST['id_user'];
-    $exec = update($koneksi, 'tb_user', $data, ['id_user' => $id_user]);
-    
     if ($exec) {
         $ektensi = ['jpg', 'png'];
         if ($_FILES['profile']['name'] <> '') {

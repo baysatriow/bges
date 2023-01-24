@@ -29,11 +29,11 @@
 		}
 	?>
 
-	<style>
+	<!-- <style>
 		.dataTables_filter {
 		visibility: hidden;
 		}
-	</style>
+	</style> -->
 	<div class="row">
 		<div class="col-md-12">
 			<div class="card">
@@ -44,13 +44,6 @@
 					<button class="btn btn-dark btn-xs" data-toggle="modal" data-target="#importdata"><i class="fas fa-upload"></i> Import</button>
 					<button class="btn btn-dark btn-xs" data-toggle="modal" data-target="#tambahdata"><i class="fas fa-plus-square"></i> Tambah</button>
 					<button type="button" id="btnhapus" class="btn btn-dark btn-xs"><i class="fas fa-trash    "></i> Hapus</button>
-					<select id="search-layanan" class="form-control" type="text">
-						<option value="PSB">PSB</option>
-						<option value="saab">Saab</option>
-						<option value="mercedes">Mercedes</option>
-						<option value="audi">Audi</option>
-					</select>
-					<input id="search-1" name="layanan" class="form-control" placeholder="Search...." type="text"/>
 					<?php } ?>
 					<!-- Modal Area -->
 					<!-- Modal Import -->

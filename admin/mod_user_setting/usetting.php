@@ -27,7 +27,7 @@
 			<form id="form-setting">
 			<div class="card" id="settings-card">
 				<div class="card-header">
-					<div class="alert alert-info">Halaman ini Memuat Pengaturan Pengguna, Kolom <b>Password Baru</b> Hanya Di Isi Jika Ingin Ganti Password</div>
+					<div class="alert alert-info">Halaman ini Memuat Pengaturan Pengguna, Kolom <b>Password Lama dan Password Baru</b> Hanya Di Isi Jika Ingin Ganti Password</div>
 				</div>
 				<div class="card-body">
 					<div class="form-group row align-items-center">
@@ -83,12 +83,12 @@
 										</div>
 		                </div>
 		            </div>
-					<!-- <div class="form-group row align-items-center">
+					<div class="form-group row align-items-center">
 		                <label for="site-title" class="form-control-label col-sm-3 text-md-right">Password Lama</label>
 		                <div class="col-sm-6 col-md-9">
 		                    <input type="password" name="password_lama" class="form-control">
 		                </div>
-		            </div> -->
+		            </div>
 					<div class="form-group row align-items-center">
 		                <label for="site-title" class="form-control-label col-sm-3 text-md-right">Password Baru</label>
 		                <div class="col-sm-6 col-md-9">
@@ -140,9 +140,6 @@
                         message: 'Password Lama Salah!!',
                         position: 'topRight'
                     });
-                    setTimeout(function() {
-                        window.location.reload();
-                    }, 2000);
                 }else{
                     iziToast.info({
                         title: 'Sukses',

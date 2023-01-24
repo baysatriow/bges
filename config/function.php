@@ -1,6 +1,6 @@
 <?php
 $setting = mysqli_fetch_array(mysqli_query($koneksi, "select * from tb_setting where id_setting='1'"));
-
+// $password= mysqli_fetch_array(mysqli_query($koneksi, "select * from tb_user"));
 if (!function_exists('base_url')) {
 	function base_url($atRoot = FALSE, $atCore = FALSE, $parse = FALSE)
 	{
@@ -13,7 +13,7 @@ if (!function_exists('base_url')) {
 			$tmplt = $atRoot ? ($atCore ? "%s://%s/%s/" : "%s://%s/") : ($atCore ? "%s://%s/%s/" : "%s://%s%s");
 			$end = $atRoot ? ($atCore ? $core : $hostname) : ($atCore ? $core : $dir);
 			$base_url = sprintf($tmplt, $http, $hostname, $end);
-		} else $base_url = 'http://localhost/';
+		} else $base_url = 'http://localhost/bges';
 		if ($parse) {
 			$base_url = parse_url($base_url);
 			if (isset($base_url['path'])) if ($base_url['path'] == '/') $base_url['path'] = '';
@@ -65,7 +65,7 @@ function cek_login_admin()
 {
 
 	$level = $_SESSION['level'];
-	if ($level != 'admin') {
+	if ($level != 'Admin') {
 		echo "<script>document.location='.';</script>";
 		die();
 	}
@@ -74,7 +74,7 @@ function cek_login_admin()
 function cek_session_guru()
 {
 	$level = $_SESSION['level'];
-	if ($level != 'guru' and $level != 'admin') {
+	if ($level != 'guru' and $level != 'Admin') {
 		echo "<script>document.location='.';</script>";
 	}
 }

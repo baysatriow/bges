@@ -45,19 +45,6 @@ if ($_GET['action'] == "table_data"){
         $totalFiltered = $datacount['jumlah'];
     }
 
-	// if (empty($_POST['layanan']['value'])) {
-    //     $query = $koneksi->query("SELECT id_pel,nama_pel,alamat,phone,layanan,ca,ca_site,ca_nipnas,ba,ba_site,nomor_quote,nomor_aggre,nomor_order,sid FROM tb_pelanggan ORDER BY $order $dir LIMIT $limit OFFSET $start");
-
-    // } else {
-    //     $layanan = $_POST['layanan']['value'];
-    //     $query = $koneksi->query("SELECT id_pel,nama_pel,alamat,phone,layanan,ca,ca_site,ca_nipnas,ba,ba_site,nomor_quote,nomor_aggre,nomor_order,sid FROM tb_pelanggan WHERE nama_pel LIKE '%$layanan%' OR layanan LIKE '%$layanan%' OR ca LIKE '%$layanan%' OR ca_site LIKE '%$layanan%' OR ca_nipnas LIKE '%$layanan%' OR ba LIKE '%$layanan%' OR ba_site LIKE '%$layanan%' OR nomor_quote LIKE '%$layanan%' OR nomor_aggre LIKE '%$layanan%' OR nomor_order LIKE '%$layanan%' OR sid LIKE '%$layanan%' ORDER BY $order $dir LIMIT $limit OFFSET $start");
-
-    //     $querycount = $koneksi->query("SELECT count(id_pel) as jumlah FROM tb_pelanggan WHERE nama_pel LIKE '%$layanan%' OR layanan LIKE '%$layanan%'");
-
-    //     $datacount = $querycount->fetch_array();
-    //     $totalFiltered = $datacount['jumlah'];
-    // }
-
     $data = array();
     if (!empty($query)) {
         $no = $start + 1;

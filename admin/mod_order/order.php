@@ -215,7 +215,7 @@
 						<table id="basic-datatables" class="display table table-striped table-hover" >
 							<thead align="center">
 								<tr>
-									<!-- <th><input type='checkbox' id='ceksemua'></th> -->
+									<th><input type='checkbox' id='ceksemua'></th>
 									<th>#</th>
 									<th nowrap>Tanggal Input</th>
 									<th>Segmen</th>
@@ -243,154 +243,7 @@
 									<th>Aksi</th>
 								</tr>
 							</thead>
-							<!-- Modal Details Here -->
-							<div class="modal fade bd-example-modal-lg" id="#detail&id=2291" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-									        <div class="modal-dialog" role="document">
-									            <div class="modal-content">
-									            	<!-- Desc -->
-									            	
-									                <form id="form-detail">
-									                    <div class="modal-header">
-									                        <h5 class="modal-title"><i class="fas fa-info-circle"></i> Detail AM <b><?= $order['id_order'] ?></b></h5>
-									                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									                            <span aria-hidden="true">&times;</span>
-									                        </button>
-									                    </div>
-									                    <div class="modal-body">
-															<div class="form-group">
-																<label>Tanggal Input</label>
-																<input type="date" name="tgl_input" class="form-control" value="<?= $order['tgl_input'] ?>" readonly>
-															</div>
-															<div class="form-group">
-																<label>Segmen</label>
-																<input type="number" name="segmen" class="form-control" value="<?= $order['segmen'] ?>" readonly>
-															</div>
-															<div class="form-group">
-																<label>Nama AM</label>
-																<input type="text" name="nama_am" class="form-control" value="<?= $order['nama_am'] ?>" readonly>
-															</div>
-															<div class="form-group">
-																<label>Nama Pelanggan</label>
-																<input type="text" name="nama_pel" class="form-control" value="<?= $order['nama_pel'] ?>" readonly>
-															</div>
-															<div class="form-group">
-																<label>Layanan</label>
-																<input type="text" name="layanan" class="form-control" value="<?= $order['layanan'] ?>" readonly>
-															</div>
-															<div class="form-group">
-																<label>Harga OTC</label>
-																<input type="text" name="hrg_otc" class="form-control" value="<?= $order['hrg_otc'] ?>" readonly>
-															</div>
-															<div class="form-group">
-																<label>Harga Monthly</label>
-																<input type="text" name="hrg_otc" class="form-control" value="<?= $order['hrg_mountly'] ?>" readonly>
-															</div>
-															<div class="form-group">
-																<label>Status Layanan</label>
-																<input type="text" name="status_lyn" class="form-control" value="<?= $order['status_lyn'] ?>" readonly>
-															</div>
-															<div class="form-group">
-																<label>Customer Account</label>
-																<input type="text" name="ca" class="form-control" value="<?= $order['ca'] ?>" readonly>
-															</div>
-															<div class="form-group">
-																<label>Customer Account Site</label>
-																<input type="text" name="ca_site" class="form-control" value="<?= $order['ca_site'] ?>" readonly>
-															</div>
-															<div class="form-group">
-																<label>Customer Account Nipnas</label>
-																<input type="text" name="ca_nipnas" class="form-control" value="<?= $order['ca_nipnas'] ?>" readonly>
-															</div>
-															<div class="form-group">
-																<label>Billing Account</label>
-																<input type="text" name="ba" class="form-control" value="<?= $order['ba'] ?>" readonly>
-															</div>
-															<div class="form-group">
-																<label>Billing Account Site</label>
-																<input type="text" name="ba_site" class="form-control" value="<?= $order['ba_site'] ?>" readonly>
-															</div>
-															<div class="form-group">
-																<label>Nomor Quote</label>
-																<input type="text" name="nomor_quote" class="form-control" value="<?= $order['nomor_quote'] ?>" readonly>
-															</div>
-															<div class="form-group">
-																<label>Nomor Aggrement</label>
-																<input type="text" name="nomor_aggrement" class="form-control" value="<?= $order['nomor_aggre'] ?>" readonly>
-															</div>
-															<div class="form-group">
-																<label>Nomor Order</label>
-																<input type="text" name="no_order" class="form-control" value="<?= $order['no_order'] ?>" readonly>
-															</div>
-															<div class="form-group">
-																<label>Status Order</label>
-																<input type="text" name="status_order" class="form-control" value="<?= $order['status_order'] ?>" readonly>
-															</div>
-															<div class="form-group">
-																<label>Date End Of Contract</label>
-																<input type="date" name="date_end" class="form-control" value="<?= $order['date_end'] ?>" readonly>
-															</div>
-															<div class="form-group">
-																<label>Date Prov Of Contract</label>
-																<input type="date" name="date_prov" class="form-control" value="<?= $order['date_prov'] ?>" readonly>
-															</div>
-															<div class="form-group">
-																<label>Nomor Order Lama</label>
-																<input type="text" name="order_lama"  class="form-control" value="<?= $order['order_lama'] ?>" readonly>
-															</div>
-															<div class="form-group">
-																<label>Sid</label>
-																<input type="text" name="sid" class="form-control" value="<?= $order['sid'] ?>" readonly>
-															</div>
-															<div class="form-group">
-																<label>Keterangan</label>
-																<input type="text" name="ket" class="form-control" value="<?= $order['ket'] ?>" readonly>
-															</div>
-														</div>
-									                    <div class="modal-footer">
-									                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-									                    </div>
-									                </form>
-									            </div>
-									        </div>
-									    </div>
-										<!-- Modal End -->
-							<!-- Modal Edit Here -->
-							<div class="modal fade bd-example-modal-lg" id="editdata" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-									        <div class="modal-dialog" role="document">
-									            <div class="modal-content">
-									            	<!-- Desc -->
-									            	
-									                <form id="form-edit">
-									                    <div class="modal-header">
-									                        <h5 class="modal-title"><i class="fas fa-info-circle"></i> Edit AM <b><?= $order['nama_am'] ?></b></h5>
-									                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									                            <span aria-hidden="true">&times;</span>
-									                        </button>
-									                    </div>
-									                    <div class="modal-body">
-									                        <div class="form-group">
-																<input type="hidden" name="id_am" value="<?php echo $order['id_am'] ?>">
-									                            <label>Nama</label>
-									                            <input type="text" name="nama_am" class="form-control" value="<?= $order['nama_am'] ?>">
-									                        </div>
-									                        <div class="form-group">
-									                            <label>NIK</label>
-									                            <input type="number" name="nik" class="form-control" value="<?= $order['nik'] ?>">
-									                        </div>
-									                        <div class="form-group">
-									                            <label>Segmen</label>
-									                            <input type="text" name="segmen" class="form-control" value="<?= $order['segmen'] ?>">
-									                        </div>
-									                    </div>
-									                    <div class="modal-footer">
-															<button type="submit" class="btn btn-dark">Save</button>
-									                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-									                    </div>
-									                </form>
-									            </div>
-									        </div>
-									    </div>
-										<!-- Modal End -->
+							
 						</table>
 					</div>
 					<!-- End -->
@@ -430,57 +283,116 @@
                 });
             }
 
-$(document).ready(function(){
-	
-	// Table Tampil
-	var table = $('#basic-datatables').DataTable( { 
-		         "processing": true,
-		         "serverSide": true,
-		         "ajax": "mod_order/fetchData.php",
-		         "columnDefs": 
-		         [
-		         	{
-		         	 	"targets": 6,
-		             	"render": $.fn.dataTable.render.number( '.', '', '', 'Rp. ' )
-		             
-		         	},
-		         	{
-		         	 	"targets": 7,
-		             	"render": $.fn.dataTable.render.number( '.', '', '', 'Rp. ' )
-		             
-		         	},
-					{
-						"searchable" : false,
-						"orderable"  : false,
-		         		"targets": 24,
-						"render" : function( data, type, row) {
-							var btn = "<center><button class=\"btn btn-success btn-xs\" data-toggle=\"modal\" data-target=\"#editdata\"><i class=\"fas fa-edit\"></i></button> <button class=\"btn btn-success btn-xs\" data-toggle=\"modal\" data-target=\"#detail&id="+data+"\"> <i class=\"fas fa-edit\"></i></button>";
-							return btn;
-						}
-		             	// "defaultContent": "<center><button class='btn btn-success btn-xs' data-toggle='modal' data-target='#editdata'><i class='fas fa-edit'></i></button> <button class='btn btn-success btn-xs' data-toggle='modal' data-target='#detail&id'+ data +''><i class='fas fa-edit'></i></button>" 
-		         	},
-		        ],
-				// "columns": [
-				// 	{"data":null,
-			
-				// 	"defaultContent": '<label class="checkbox checkbox-lg"> </label>',
-				// 	},
-				// 	{
-				// 	"data": "id",
-				// 	"render": function ( data, type, row, meta ) {
-				// 	return '<a href="'+ data +'"><i style="font-size: 1.50rem !important;" class="fa fa-download"></i></a>';
-				// 	},
-				// }
-				// ],
-		    });
 
-			table.on('draw.dt', function () {
-	            var info = table.page.info();
-	            table.column(0, { search: 'applied', order: 'applied', page: 'applied' }).nodes().each(function (cell, i) {
-	                cell.innerHTML = i + 1 + info.start;
-	            });
-	        });
+			$(document).ready(function(){
+			var table = $('#basic-datatables').DataTable({
+			processing: true,
+			serverSide: true,
+			
+			// "ajax": "mod_pelanggan/fetchData.php",
+			ajax: {
+				"url": "mod_order/fetchDatas.php?action=table_data",
+				"dataType": "json",
+				"type": "POST"
+			},
+			columns:[
+				{"data": "check_id"},
+				{"data": "no"},
+				{"data": "tgl_input"},
+				{"data": "segmen"},
+				{"data": "nama_am"},
+				{"data": "nama_pel"},
+				{"data": "layanan"},
+				{"data": "hrg_otc"},
+				{"data": "hrg_mountly"},
+				{"data": "status_lyn"},
+				{"data": "ca"},
+				{"data": "ca_site"},
+				{"data": "ca_nipnas"},
+				{"data": "ba"},
+				{"data": "ba_site"},
+				{"data": "nomor_quote"},
+				{"data": "nomor_aggre"},
+				{"data": "nomor_order"},
+				{"data": "status_order"},
+				{"data": "date_end"},
+				{"data": "remaining"},
+				{"data": "date_prov"},
+				{"data": "order_lama"},
+				{"data": "sid"},
+				{"data": "ket"},
+				{"data": "aksi"},
+			],
+			// "columnDefs": [ {
+			// 	"targets": 0,
+			// 	"orderable": false,
+			// 	} ]
+		});
+		// Filter Search
+		// $('#search-filter').keyup( function() {
+		// table.search( this.value ).draw();
+		// } );
+		// $('#search-layanan').keyup( function() {
+		// table.search( this.value ).draw();
+		// } );
+		// table.on('draw.dt', function () {
+		// 		var info = table.page.info();
+		// 		table.column(, { search: 'applied', order: 'applied', page: 'applied' }).nodes().each(function (cell, i) {
+		// 			cell.innerHTML = i + 1 + info.start;
+		// 		});
+		// 	});
 	});
+// $(document).ready(function(){
+	
+// 	// Table Tampil
+// 	var table = $('#basic-datatables').DataTable( { 
+// 		         "processing": true,
+// 		         "serverSide": true,
+// 		         "ajax": "mod_order/fetchData.php",
+// 		         "columnDefs": 
+// 		         [
+// 		         	{
+// 		         	 	"targets": 6,
+// 		             	"render": $.fn.dataTable.render.number( '.', '', '', 'Rp. ' )
+		             
+// 		         	},
+// 		         	{
+// 		         	 	"targets": 7,
+// 		             	"render": $.fn.dataTable.render.number( '.', '', '', 'Rp. ' )
+		             
+// 		         	},
+// 					{
+// 						"searchable" : false,
+// 						"orderable"  : false,
+// 		         		"targets": 24,
+// 						"render" : function( data, type, row) {
+// 							var btn = "<center><button class=\"btn btn-success btn-xs\" data-toggle=\"modal\" data-target=\"#editdata\"><i class=\"fas fa-edit\"></i></button> <button class=\"btn btn-success btn-xs\" data-toggle=\"modal\" data-target=\"#detail&id="+data+"\"> <i class=\"fas fa-edit\"></i></button>";
+// 							return btn;
+// 						}
+// 		             	// "defaultContent": "<center><button class='btn btn-success btn-xs' data-toggle='modal' data-target='#editdata'><i class='fas fa-edit'></i></button> <button class='btn btn-success btn-xs' data-toggle='modal' data-target='#detail&id'+ data +''><i class='fas fa-edit'></i></button>" 
+// 		         	},
+// 		        ],
+// 				// "columns": [
+// 				// 	{"data":null,
+			
+// 				// 	"defaultContent": '<label class="checkbox checkbox-lg"> </label>',
+// 				// 	},
+// 				// 	{
+// 				// 	"data": "id",
+// 				// 	"render": function ( data, type, row, meta ) {
+// 				// 	return '<a href="'+ data +'"><i style="font-size: 1.50rem !important;" class="fa fa-download"></i></a>';
+// 				// 	},
+// 				// }
+// 				// ],
+// 		    });
+
+// 			table.on('draw.dt', function () {
+// 	            var info = table.page.info();
+// 	            table.column(0, { search: 'applied', order: 'applied', page: 'applied' }).nodes().each(function (cell, i) {
+// 	                cell.innerHTML = i + 1 + info.start;
+// 	            });
+// 	        });
+// 	});
 
 	
 	
