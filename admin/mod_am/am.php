@@ -21,17 +21,12 @@
 			<div class="card">
 				<div class="card-header">
 					<?php 
-					if($user['level'] == "Admin"){
+					if($user['level'] == "Admin" OR $user['level'] == "Office" ){
 					?>
 					<!-- <button class="btn btn-dark btn-xs" data-toggle="modal" data-target="#importdata"><i class="fas fa-upload"></i> Import</button> -->
 					<button class="btn btn-dark btn-xs" data-toggle="modal" data-target="#tambahdata"><i class="fas fa-plus-square"></i> Tambah</button>
 					<button type="button" id="btnhapus" class="btn btn-dark btn-xs"><i class="fas fa-trash    "></i> Hapus</button>
-					<?php }
-					else if($user['level'] == "Office") {
-					?>
-					<button class="btn btn-dark btn-xs" data-toggle="modal" data-target="#tambahdata"><i class="fas fa-plus-square"></i> Tambah</button>
-					<button type="button" id="btnhapus" class="btn btn-dark btn-xs"><i class="fas fa-trash    "></i> Hapus</button>
-					<?php	} ?>
+					<?php } ?>
 					<!-- Modal Area -->
 					<!-- Modal Import -->
 				    <div class="modal fade" id="importdata" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
@@ -83,7 +78,7 @@
 				                        </div>
 				                        <div class="form-group">
 				                            <label>Segmen</label>
-											<select name="segmen" id="" class="form-control" required=''>
+											<select name="segmen" id="segmen" class="form-control" required=''>
 												<option value="DBS">DBS</option>
 												<option value="DGS">DGS</option>
 												<option value="DES">DES</option>
@@ -113,13 +108,7 @@
 									<th>Nama AM</th>
 									<th>NIK</th>
 									<th>Segmen</th>
-									<?php 
-										if($user['level'] == "Admin"){
-									?>
 									<th width="150px">Aksi</th>
-									<?php 
-										}
-									?>
 								</tr>
 							</thead>
 							<tbody align="center">
@@ -136,12 +125,14 @@
 									<td><?= $am['nik'] ?></td>
 									<td ><?=$am['segmen'] ?></td>
 									<?php 
-										if($user['level'] == "Admin"){
+										if($user['level'] == "Admin" OR $user['level'] == "Office"){
 									?>
 									<td>
-										<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#detail<?= $no ?>"><i class="fas fa-info-circle"></i></button>
-										<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#modal-edit<?= $no ?>"></i>Edit</button>
-										<button type='button' class='hapus btn btn-danger btn-xs'  data-id="<?= $am['id_am'] ?>" >Hapus</button>
+										<div class="btn-group" role="group" aria-label="Basic example">
+											<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#detail<?= $no ?>"><i class="fas fa-info-circle"></i></button>
+											<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#modal-edit<?= $no ?>"></i>Edit</button>
+											<button type='button' class='hapus btn btn-danger btn-xs'  data-id="<?= $am['id_am'] ?>" >Hapus</button>
+										</div>
 										<!-- Modal Details Here -->
 										<div class="modal fade bd-example-modal-lg" id="detail<?= $no ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 									        <div class="modal-dialog" role="document">
@@ -258,8 +249,10 @@
 										<!-- Script End -->
 									</td>
 									<?php 
-										}
+										} else {
 									?>
+									<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#detail<?= $no ?>"><i class="fas fa-info-circle"></i></button>
+									<?php } ?>
 								</tr>
 								<?php } ?>
 							</tbody>
@@ -380,9 +373,6 @@
         });
         return false;
     });
-
-	// Edit
-	
 
 </script>
 <!-- End -->

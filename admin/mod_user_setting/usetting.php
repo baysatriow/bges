@@ -18,7 +18,7 @@
 				<i class="flaticon-right-arrow"></i>
 			</li>
 			<li class="nav-item">
-				<a href="?pg=setting">Pengaturan User</a>
+				<a href="?pg=usetting">Pengaturan User</a>
 			</li>
 		</ul>
 	</div>

@@ -7,6 +7,20 @@ session_start();
 if (!isset($_SESSION['id_user'])) {
     die('Anda tidak diijinkan mengakses langsung');
 }
+
+// Tambah Data
+if ($pg == 'tambah') {
+    $data = [
+        'nama_am'          => $_POST['nama_am'],
+        'nik'           => $_POST['nik'],
+        'segmen'           => $_POST['segmen'],
+ 
+    ];
+    $exec = insert($koneksi, 'tb_am', $data);
+    echo $exec;
+}
+
+// Edit Data
 if ($pg == 'edit') {
 
     $where = [
@@ -22,18 +36,7 @@ if ($pg == 'edit') {
     // echo $data;
 }
 
-if ($pg == 'tambah') {
-    $data = [
-        'nama_am'          => $_POST['nama_am'],
-        'nik'           => $_POST['nik'],
-        'segmen'           => $_POST['segmen'],
- 
-    ];
-    $exec = insert($koneksi, 'tb_am', $data);
-    echo $exec;
-}
-
-// Hapus Per Record
+// Hapus Data Berdasarkan ID
 if ($pg == 'hapus') {
 
     $id=$_POST['id_am'];
@@ -46,7 +49,7 @@ if ($pg == 'hapus') {
     }
 }
 
-// Hapus Menggunakan Checklist
+// Hapus Data Menggunakan Checklist
 if ($pg == 'hapusdaftar') {
     $kode = $_POST['kode'];
     $query = mysqli_query($koneksi, "DELETE from tb_am where id_am in (" . $kode . ")");
