@@ -122,11 +122,11 @@
             processData: false,
             contentType: false,
             cache: false,
-            beforeSend: function() {
-                $('form button').on("click", function(e) {
-                    e.preventDefault();
-                });
-            },
+            // beforeSend: function() {
+            //     $('form button').on("click", function(e) {
+            //         e.preventDefault();
+            //     });
+            // },
             success: function(data) {
                 if(data == 'ukuran'){
 					iziToast.warning({
