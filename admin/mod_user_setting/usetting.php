@@ -84,21 +84,23 @@
 		                </div>
 		            </div>
 					<div class="form-group row align-items-center">
-		                <label for="site-title" class="form-control-label col-sm-3 text-md-right">Password Lama</label>
+		                <label for="site-title" class="form-control-label col-sm-3 text-md-right">Password Saat Ini</label>
 		                <div class="col-sm-6 col-md-9">
 		                    <input type="password" name="password_lama" class="form-control">
+							<div class="form-text text-muted">* Di Isi Jika Ganti Password</div>
 		                </div>
 		            </div>
 					<div class="form-group row align-items-center">
 		                <label for="site-title" class="form-control-label col-sm-3 text-md-right">Password Baru</label>
 		                <div class="col-sm-6 col-md-9">
 		                    <input type="password" name="password_baru" class="form-control">
+							<div class="form-text text-muted">* Di Isi Jika Ganti Password</div>
 		                </div>
 		            </div>
 				</div>
 				<div class="card-footer text-md-right">
 					<button type="submit" class="btn btn-dark" id="save-btn">Save Changes</button>
-            		<button class="btn btn-danger" type="button">Reset</button>
+            		<!-- <button class="btn btn-danger" type="reset">Reset</button> -->
 				</div>
 			</div>
 			</form>
