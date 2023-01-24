@@ -7,8 +7,6 @@ if (!isset($_SESSION['id_user'])) {
     die('Anda tidak diijinkan mengakses langsung');
 }
 
-
-
 if ($pg == 'ubah') {
 
     $username = mysqli_real_escape_string($koneksi, $_POST['username']);
@@ -26,8 +24,44 @@ if ($pg == 'ubah') {
                 'phone'         => $_POST['phone'],
                 'password'      => password_hash($_POST['password_baru'], PASSWORD_DEFAULT),
             ];
+
             $id_user = $_POST['id_user'];
             $exec = update($koneksi, 'tb_user', $data1, ['id_user' => $id_user]);
+            // Upload Photo Profile
+            if ($exec) {
+                $ektensi = ['jpg', 'png'];
+                if ($_FILES['profile']['name'] <> '') {
+                    $profile = $_FILES['profile']['name'];
+                    $temp = $_FILES['profile']['tmp_name'];
+                    $ukuran = $_FILES['profile']['size'];
+                    $ext = explode('.', $profile);
+                    $ext = end($ext);
+        
+                    if($ukuran < 1044070) {
+                        if (in_array($ext, $ektensi)) {
+                            $dest = 'assets/uploaded/profile/' . $profile;
+                            $upload = move_uploaded_file($temp, '../../' . $dest);
+                            if ($upload) {
+                                $data2 = [
+                                    'photo' => $profile
+                                ];
+                                $exec = update($koneksi, 'tb_user', $data2, $where);
+                                if($exec){
+                                    
+                                }
+                            } else {
+                                echo "gagal";
+                            }
+                        }
+                        
+                    }else{
+                        echo "ukuran";
+                    }
+                    
+                }
+            } else {
+                echo "Gagal menyimpan";
+            }
         } else {
             echo "PW";
         }
@@ -39,42 +73,45 @@ if ($pg == 'ubah') {
             'email'         => $_POST['email'],
             'phone'         => $_POST['phone'],
         ];
+
         $id_user = $_POST['id_user'];
         $exec = update($koneksi, 'tb_user', $data2, ['id_user' => $id_user]);
-    }
-
-    if ($exec) {
-        $ektensi = ['jpg', 'png'];
-        if ($_FILES['profile']['name'] <> '') {
-            $profile = $_FILES['profile']['name'];
-            $temp = $_FILES['profile']['tmp_name'];
-            $ukuran = $_FILES['profile']['size'];
-            $ext = explode('.', $profile);
-            $ext = end($ext);
-
-            if($ukuran < 1044070) {
-                if (in_array($ext, $ektensi)) {
-                    $dest = 'assets/uploaded/profile/' . $profile;
-                    $upload = move_uploaded_file($temp, '../../' . $dest);
-                    if ($upload) {
-                        $data2 = [
-                            'photo' => $profile
-                        ];
-                        $exec = update($koneksi, 'tb_user', $data2, $where);
-                        if($exec){
-                            
+        // Upload Photo Profile
+        if ($exec) {
+            $ektensi = ['jpg', 'png'];
+            if ($_FILES['profile']['name'] <> '') {
+                $profile = $_FILES['profile']['name'];
+                $temp = $_FILES['profile']['tmp_name'];
+                $ukuran = $_FILES['profile']['size'];
+                $ext = explode('.', $profile);
+                $ext = end($ext);
+    
+                if($ukuran < 1044070) {
+                    if (in_array($ext, $ektensi)) {
+                        $dest = 'assets/uploaded/profile/' . $profile;
+                        $upload = move_uploaded_file($temp, '../../' . $dest);
+                        if ($upload) {
+                            $data3 = [
+                                'photo' => $profile
+                            ];
+                            $exec = update($koneksi, 'tb_user', $data3, $where);
+                            if($exec){
+                                
+                            }
+                        } else {
+                            echo "gagal";
                         }
-                    } else {
-                        echo "gagal";
                     }
+                    
+                }else{
+                    echo "ukuran";
                 }
                 
-            }else{
-                echo "ukuran";
             }
-            
+        } else {
+            echo "Gagal menyimpan";
         }
-    } else {
-        echo "Gagal menyimpan";
     }
+
+
 }

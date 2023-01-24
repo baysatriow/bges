@@ -135,7 +135,7 @@
                         position: 'topRight'
                     });
 				}else if (data == 'PW') {
-                    iziToast.info({
+                    iziToast.warning({
                         title: 'Maaf!',
                         message: 'Password Lama Salah!!',
                         position: 'topRight'
