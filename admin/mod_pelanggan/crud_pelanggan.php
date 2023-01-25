@@ -46,7 +46,19 @@ if($pg == 'tampil'){
 
     } else {
         $search = $_POST['search']['value'];
-        $query = $koneksi->query("SELECT id_pel,nama_pel,alamat,phone,layanan,ca,ca_site,ca_nipnas,ba,ba_site,nomor_quote,nomor_aggre,nomor_order,sid FROM tb_pelanggan WHERE nama_pel LIKE '%$search%' OR layanan LIKE '%$search%' OR ca LIKE '%$search%' OR ca_site LIKE '%$search%' OR ca_nipnas LIKE '%$search%' OR ba LIKE '%$search%' OR ba_site LIKE '%$search%' OR nomor_quote LIKE '%$search%' OR nomor_aggre LIKE '%$search%' OR nomor_order LIKE '%$search%' OR sid LIKE '%$search%' ORDER BY $order $dir LIMIT $limit OFFSET $start");
+        $query = $koneksi->query("SELECT id_pel,nama_pel,alamat,phone,layanan,ca,ca_site,ca_nipnas,ba,ba_site,nomor_quote,nomor_aggre,nomor_order,sid FROM tb_pelanggan 
+        WHERE nama_pel LIKE '%$search%' 
+        OR layanan LIKE '%$search%' 
+        OR ca LIKE '%$search%' 
+        OR ca_site LIKE '%$search%' 
+        OR ca_nipnas LIKE '%$search%' 
+        OR ba LIKE '%$search%' 
+        OR ba_site LIKE '%$search%' 
+        OR nomor_quote LIKE '%$search%' 
+        OR nomor_aggre LIKE '%$search%' 
+        OR nomor_order LIKE '%$search%' 
+        OR sid LIKE '%$search%' 
+        ORDER BY $order $dir LIMIT $limit OFFSET $start");
 
         $querycount = $koneksi->query("SELECT count(id_pel) as jumlah FROM tb_pelanggan WHERE nama_pel LIKE '%$search%' OR layanan LIKE '%$search%'");
 

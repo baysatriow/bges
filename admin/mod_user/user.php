@@ -157,12 +157,15 @@
 										</div>
 									</td>
 									<td>
+									<div class="btn-group" role="group" aria-label="Basic example">
 										<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#detail<?= $no ?>"><i class="fas fa-info-circle"></i></button>
 										<?php 
 											if($user['level'] == "Admin"){
 										?>
-										<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#modal-edit<?= $no ?>"><i class="fas fa-plus-square"></i> Edit</button>
-										<button type='button' class='hapus btn btn-danger btn-xs'  data-id="<?= $userData['id_user'] ?>" >Hapus</button>
+											<!-- <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#detail<?= $no ?>"><i class="fas fa-info-circle"></i></button> -->
+											<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#modal-edit<?= $no ?>"><i class="fas fa-plus-square"></i> Edit</button>
+											<button type='button' class='hapus btn btn-danger btn-xs'  data-id="<?= $userData['id_user'] ?>" >Hapus</button>
+										</div>
 										<?php } ?>
 										<!-- Modal Details Start-->
 										<div class="modal fade bd-example-modal-lg" id="detail<?= $no ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">

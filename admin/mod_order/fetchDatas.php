@@ -41,37 +41,37 @@ if ($_GET['action'] == "table_data"){
     $order = $columns[$_POST['order']['0']['column']];
     $dir = $_POST['order']['0']['dir'];
 
+	// $query = $koneksi->query("SELECT * FROM tb_order INNER JOIN tb_pelanggan ON tb_order.no_order=tb_pelanggan.nomor_order INNER JOIN tb_am ON tb_order.nama_am=tb_am.nama_am ORDER BY $order $dir LIMIT $limit OFFSET $start");
     if (empty($_POST['search']['value'])) {
         $query = $koneksi->query("SELECT * FROM tb_order INNER JOIN tb_pelanggan ON tb_order.no_order=tb_pelanggan.nomor_order INNER JOIN tb_am ON tb_order.nama_am=tb_am.nama_am ORDER BY $order $dir LIMIT $limit OFFSET $start");
 
     } else {
         $search = $_POST['search']['value'];
         $query = $koneksi->query("SELECT * FROM tb_order INNER JOIN tb_pelanggan ON tb_order.no_order=tb_pelanggan.nomor_order INNER JOIN tb_am ON tb_order.nama_am=tb_am.nama_am 
-		WHERE tgl_input LIKE '%$search%' 
-		OR segmen LIKE '%$search%' 
-		OR nama_am LIKE '%$search%' 
+		-- WHERE segmen LIKE '%$search%' 
+		-- OR nama_am LIKE '%$search%' 
 		OR nama_pel LIKE '%$search%' 
-		OR layanan LIKE '%$search%' 
-		OR hrg_otc LIKE '%$search%' 
-		OR hrg_mountly LIKE '%$search%' 
-		OR status_lyn LIKE '%$search%' 
-		OR ca LIKE '%$search%' 
-		OR ca_site LIKE '%$search%' 
-		OR ca_nipnas LIKE '%$search%' 
-		OR ba LIKE '%$search%' 
-		OR ba_site LIKE '%$search%' 
-		OR nomor_quote LIKE '%$search%' 
-		OR nomor_aggre LIKE '%$search%'
-		OR nomor_order LIKE '%$search%'
-		OR status_order LIKE '%$search%'
-		OR date_end LIKE '%$search%'
-		OR date_prov LIKE '%$search%'
-		OR order_lama LIKE '%$search%'
-		OR sid LIKE '%$search%'
-		OR ket LIKE '%$search%'
+		-- OR layanan LIKE '%$search%' 
+		-- OR hrg_otc LIKE '%$search%' 
+		-- OR hrg_mountly LIKE '%$search%' 
+		-- OR status_lyn LIKE '%$search%' 
+		-- OR ca LIKE '%$search%' 
+		-- OR ca_site LIKE '%$search%' 
+		-- OR ca_nipnas LIKE '%$search%' 
+		-- OR ba LIKE '%$search%' 
+		-- OR ba_site LIKE '%$search%' 
+		-- OR nomor_quote LIKE '%$search%' 
+		-- OR nomor_aggre LIKE '%$search%'
+		-- OR nomor_order LIKE '%$search%'
+		-- OR status_order LIKE '%$search%'
+		-- OR date_end LIKE '%$search%'
+		-- OR date_prov LIKE '%$search%'
+		-- OR order_lama LIKE '%$search%'
+		-- OR sid LIKE '%$search%'
+		-- OR ket LIKE '%$search%'
 		ORDER BY $order $dir LIMIT $limit OFFSET $start");
 
-        $querycount = $koneksi->query("SELECT count(id_order) as jumlah FROM tb_order INNER JOIN tb_pelanggan ON tb_order.no_order=tb_pelanggan.nomor_order INNER JOIN tb_am ON tb_order.nama_am=tb_am.nama_am WHERE nama_am LIKE '%$search%'");
+        $querycount = $koneksi->query("SELECT count(id_order) as jumlah FROM tb_order INNER JOIN tb_pelanggan ON tb_order.no_order=tb_pelanggan.nomor_order INNER JOIN tb_am ON tb_order.nama_am=tb_am.nama_am WHERE nama_pel LIKE '%$search%'");
 
         $datacount = $querycount->fetch_array();
         $totalFiltered = $datacount['jumlah'];

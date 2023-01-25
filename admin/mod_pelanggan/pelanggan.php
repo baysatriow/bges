@@ -29,11 +29,13 @@
 		}
 	?>
 
+	<!-- Removes Default Search Datatables -->
 	<!-- <style>
 		.dataTables_filter {
 		visibility: hidden;
 		}
 	</style> -->
+
 	<div class="row">
 		<div class="col-md-12">
 			<div class="card">
@@ -161,18 +163,18 @@
 								<tr>
 									<th><input type='checkbox' id='ceksemua'></th>
 									<th>#</th>
-									<th>Nama Pelanggan</th>
+									<th nowrap>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Nama Pelanggan&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</th>
 									<th>Alamat</th>
 									<th>Phone</th>
 									<th>Layanan</th>
-									<th>Customer Account</th>
+									<th nowrap>Customer Account</th>
 									<th>Customer Account Site</th>
 									<th>Customer Account Nipnas</th>
 									<th>Billing Account</th>
 									<th>Billing Account Site</th>
-									<th>Nomor Quote</th>
-									<th>Nomor Aggrement</th>
-									<th>Nomor Order</th>
+									<th nowrap>&emsp;Nomor Quote&emsp;</th>
+									<th nowrap>Nomor Aggrement</th>
+									<th nowrap>&emsp;Nomor Order&emsp;</th>
 									<th>Sid</th>
 									<th>Aksi</th>
 								</tr>
@@ -350,10 +352,12 @@
 				{"data": "sid"},
 				{"data": "aksi"},
 			],
-			"columnDefs": [ {
+			"columnDefs": [ 
+				{
 				"targets": 0,
 				"orderable": false,
-				} ]
+				},
+			]
 		});
 		// Filter Search
 		$('#search-filter').keyup( function() {

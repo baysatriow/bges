@@ -16,6 +16,14 @@
 			</li>
 		</ul>
 	</div>
+
+		<!-- Removes Default Search Datatables -->
+	<!-- <style>
+		.dataTables_filter {
+		visibility: hidden;
+		}
+	</style> -->
+
 	<div class="row">
 		<div class="col-md-12">
 			<div class="card">
@@ -220,19 +228,19 @@
 									<th nowrap>Tanggal Input</th>
 									<th>Segmen</th>
 									<th>Nama AM</th>
-									<th>Nama Pelanggan</th>
+									<th nowrap>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Nama Pelanggan&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</th>
 									<th>Layanan</th>
-									<th nowrap>Harga OTC</th>
-									<th nowrap>Harga Monthly</th>
-									<th>Status Layanan</th>
+									<th nowrap>&emsp;&emsp;&emsp;&emsp;Harga OTC&emsp;&emsp;&emsp;&emsp;</th>
+									<th nowrap>&emsp;&emsp;&emsp;&emsp;Harga Monthly&emsp;&emsp;&emsp;&emsp;</th>
+									<th nowrap>Status Layanan</th>
 									<th nowrap>Customer Account</th>
 									<th nowrap>CA Site</th>
 									<th nowrap>CA Nipnas</th>
 									<th nowrap>Billing Account</th>
 									<th nowrap>Billing Account Site</th>
-									<th nowrap>Nomor  Quote</th>
+									<th nowrap>&emsp;Nomor Quote&emsp;</th>
 									<th nowrap>Nomor Aggrement</th>
-									<th nowrap>Nomor Order</th>
+									<th nowrap>&emsp;Nomor Order&emsp;</th>
 									<th nowrap>Status Order</th>
 									<th nowrap>Date End Of Contract</th>
 									<th>Contract Remaining</th>
@@ -289,44 +297,60 @@
 			processing: true,
 			serverSide: true,
 			
-			// "ajax": "mod_pelanggan/fetchData.php",
-			ajax: {
-				"url": "mod_order/fetchDatas.php?action=table_data",
-				"dataType": "json",
-				"type": "POST"
-			},
-			columns:[
-				{"data": "check_id"},
-				{"data": "no"},
-				{"data": "tgl_input"},
-				{"data": "segmen"},
-				{"data": "nama_am"},
-				{"data": "nama_pel"},
-				{"data": "layanan"},
-				{"data": "hrg_otc"},
-				{"data": "hrg_mountly"},
-				{"data": "status_lyn"},
-				{"data": "ca"},
-				{"data": "ca_site"},
-				{"data": "ca_nipnas"},
-				{"data": "ba"},
-				{"data": "ba_site"},
-				{"data": "nomor_quote"},
-				{"data": "nomor_aggre"},
-				{"data": "nomor_order"},
-				{"data": "status_order"},
-				{"data": "date_end"},
-				{"data": "remaining"},
-				{"data": "date_prov"},
-				{"data": "order_lama"},
-				{"data": "sid"},
-				{"data": "ket"},
-				{"data": "aksi"},
-			],
-			// "columnDefs": [ {
-			// 	"targets": 0,
-			// 	"orderable": false,
-			// 	} ]
+			"ajax": "mod_order/fetchData.php",
+			// ajax: {
+			// 	"url": "mod_order/fetchDatas.php?action=table_data",
+			// 	"dataType": "json",
+			// 	"type": "POST"
+			// },
+			// columns:[
+			// 	{"data": "check_id"},
+			// 	{"data": "no"},
+			// 	{"data": "tgl_input"},
+			// 	{"data": "segmen"},
+			// 	{"data": "nama_am"},
+			// 	{"data": "nama_pel"},
+			// 	{"data": "layanan"},
+			// 	{"data": "hrg_otc"},
+			// 	{"data": "hrg_mountly"},
+			// 	{"data": "status_lyn"},
+			// 	{"data": "ca"},
+			// 	{"data": "ca_site"},
+			// 	{"data": "ca_nipnas"},
+			// 	{"data": "ba"},
+			// 	{"data": "ba_site"},
+			// 	{"data": "nomor_quote"},
+			// 	{"data": "nomor_aggre"},
+			// 	{"data": "nomor_order"},
+			// 	{"data": "status_order"},
+			// 	{"data": "date_end"},
+			// 	{"data": "remaining"},
+			// 	{"data": "date_prov"},
+			// 	{"data": "order_lama"},
+			// 	{"data": "sid"},
+			// 	{"data": "ket"},
+			// 	{"data": "aksi"},
+			// ],
+			// "columnDefs": [ 
+			// 	{
+			// 		"targets": 0,
+			// 		"orderable": false,
+			// 	},
+			// 	{
+			// 		"targets": 7,
+			// 		"render": $.fn.dataTable.render.number( '.', '', '', 'Rp. ' )
+					
+			// 	},
+			// 	{
+			// 		"targets": 8,
+			// 		"render": $.fn.dataTable.render.number( '.', '', '', 'Rp. ' )
+					
+			// 	},
+			// 	{
+			// 		"targets": 20,
+			// 		"className": "text-center",
+			// 	}
+			// ]
 		});
 		// Filter Search
 		// $('#search-filter').keyup( function() {

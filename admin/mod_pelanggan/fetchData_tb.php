@@ -20,6 +20,7 @@ if ($_GET['action'] == "table_data"){
        13  => 'sid',
     );
 
+	// $query = $koneksi->query("SELECT id_pel,nama_pel,alamat,phone,layanan,ca,ca_site,ca_nipnas,ba,ba_site,nomor_quote,nomor_aggre,nomor_order,sid FROM tb_pelanggan");
     $querycount = $koneksi->query("SELECT count(id_pel) as jumlah FROM tb_pelanggan");
     $datacount = $querycount->fetch_array();
 
@@ -31,7 +32,7 @@ if ($_GET['action'] == "table_data"){
     $start = $_POST['start'];
     $order = $columns[$_POST['order']['0']['column']];
     $dir = $_POST['order']['0']['dir'];
-
+	
     if (empty($_POST['search']['value'])) {
         $query = $koneksi->query("SELECT id_pel,nama_pel,alamat,phone,layanan,ca,ca_site,ca_nipnas,ba,ba_site,nomor_quote,nomor_aggre,nomor_order,sid FROM tb_pelanggan ORDER BY $order $dir LIMIT $limit OFFSET $start");
 
@@ -228,8 +229,8 @@ if ($_GET['action'] == "table_data"){
 
     $json_data = [
         "draw"            => intval($_POST['draw']),
-        "recordsTotal"    => intval($totalData),
-        "recordsFiltered" => intval($totalFiltered),
+        // "recordsTotal"    => intval($totalData),
+        // "recordsFiltered" => intval($totalFiltered),
         "data"            => $data
     ];
 
