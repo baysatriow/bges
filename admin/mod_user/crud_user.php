@@ -8,7 +8,55 @@ session_start();
 if (!isset($_SESSION['id_user'])) {
     die('Anda tidak diijinkan mengakses langsung');
 }
-// Edit Data
+
+// Add Data Query
+if ($pg == 'tambah_aja') {
+
+    $data = [
+        'nama'          => $_POST['nama'],
+        'email'         => $_POST['email'],
+        'username'      => $_POST['username'],
+        'password'      => password_hash($_POST['password'],PASSWORD_DEFAULT),
+        'phone'         => $_POST['phone'],
+        'level'         => $_POST['Roles'],
+        'photo'         => $_FILES['profile']['name'],
+    ];
+
+    $nama_file = $_FILES['profile']['name'];
+    $ukuran_file = $_FILES['profile']['size'];
+    $tipe_file = $_FILES['profile']['type'];
+    $tmp_file = $_FILES['profile']['tmp_name'];
+
+    $path = "../../assets/uploaded/profile/".$nama_file;
+
+    if($tipe_file == "image/jpeg" || $tipe_file == "image/png"){ // Cek apakah tipe file yang diupload adalah JPG / JPEG / PNG
+        // Jika tipe file yang diupload JPG / JPEG / PNG, lakukan :
+        if($ukuran_file <= 2097152){ // Cek apakah ukuran file yang diupload kurang dari sama dengan 1MB
+            // Jika ukuran file kurang dari sama dengan 1MB, lakukan :
+            // Proses upload
+            if(move_uploaded_file($tmp_file, $path)){ // Cek apakah gambar berhasil diupload atau tidak
+            // Jika gambar berhasil diupload, Lakukan :  
+            // Proses simpan ke Database
+                $exec = insert($koneksi, 'tb_user', $data);
+                echo $exec;
+                if($exec){ // Cek jika proses simpan ke database sukses atau tidak
+                    // Jika Sukses, Lakukan :
+                }else{
+                    // Jika Gagal, Lakukan :
+                }
+            }else{
+            // Jika gambar gagal diupload, Lakukan :
+            }
+        }else{
+            // Ukuran Gambar Terlalu Besar
+            echo "ukuran";
+        }
+        }else{
+        // Jika tipe file yang diupload bukan JPG / JPEG / PNG, lakukan :
+        }
+}
+
+// Update Data Query
 if ($pg == 'edit') {
     $id = $_POST['id_user'];
 
@@ -31,10 +79,7 @@ if ($pg == 'edit') {
         ];
     }
 
-
-
     $where = [
-        // 'username' => $_POST['username'],
         'id_user' => $id,
     ];
     
@@ -77,56 +122,7 @@ if ($pg == 'edit') {
     }
 }
 
-// Add Data User
-if ($pg == 'tambah_aja') {
-
-    $data = [
-        'nama'          => $_POST['nama'],
-        'email'         => $_POST['email'],
-        'username'      => $_POST['username'],
-        'password'      => password_hash($_POST['password'],PASSWORD_DEFAULT),
-        'phone'         => $_POST['phone'],
-        'level'         => $_POST['Roles'],
-        'photo'         => $_FILES['profile']['name'],
-    ];
-
-    $nama_file = $_FILES['profile']['name'];
-    $ukuran_file = $_FILES['profile']['size'];
-    $tipe_file = $_FILES['profile']['type'];
-    $tmp_file = $_FILES['profile']['tmp_name'];
-
-    $path = "../../assets/uploaded/profile/".$nama_file;
-
-    if($tipe_file == "image/jpeg" || $tipe_file == "image/png"){ // Cek apakah tipe file yang diupload adalah JPG / JPEG / PNG
-        // Jika tipe file yang diupload JPG / JPEG / PNG, lakukan :
-        if($ukuran_file <= 2097152){ // Cek apakah ukuran file yang diupload kurang dari sama dengan 1MB
-            // Jika ukuran file kurang dari sama dengan 1MB, lakukan :
-            // Proses upload
-            if(move_uploaded_file($tmp_file, $path)){ // Cek apakah gambar berhasil diupload atau tidak
-            // Jika gambar berhasil diupload, Lakukan :  
-            // Proses simpan ke Database
-                $exec = insert($koneksi, 'tb_user', $data);
-                echo $exec;
-            if($exec){ // Cek jika proses simpan ke database sukses atau tidak
-                // Jika Sukses, Lakukan :
-            }else{
-                // Jika Gagal, Lakukan :
-            }
-            }else{
-            // Jika gambar gagal diupload, Lakukan :
-            }
-        }else{
-            // Ukuran Gambar Terlalu Besar
-            echo "ukuran";
-        }
-        }else{
-        // Jika tipe file yang diupload bukan JPG / JPEG / PNG, lakukan :
-        }
-    // $exec = insert($koneksi, 'tb_user', $data);
-    // echo $exec;
-}
-
-// Hapus Per Record
+// Delete Data Query in Columns
 if ($pg == 'hapus') {
 
     $id=$_POST['id_user'];
@@ -139,7 +135,7 @@ if ($pg == 'hapus') {
     }
 }
 
-// Delete Record By Checkbox
+// Delete Data Query by Checklist
 if ($pg == 'hapusdaftar') {
     $kode = $_POST['kode'];
     $query = mysqli_query($koneksi, "DELETE from tb_user where id_user in (" . $kode . ")");

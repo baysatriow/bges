@@ -114,7 +114,7 @@
                         position: 'topRight'
                     });
                     setTimeout(function() {
-                        window.location.href = "user";
+                        window.location.href = "admin";
                     }, 2000);
 
                 } else {

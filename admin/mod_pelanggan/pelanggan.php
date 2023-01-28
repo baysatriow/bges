@@ -22,9 +22,15 @@
 	<?php 
 		if(isset($_GET['pesan'])){
 			if($_GET['pesan'] == "sukses"){
-				echo '<div class="alert alert-success">
-						Data Berhasil Di Update
-					</div>';
+				echo "<script type='text/javascript'>iziToast.info({
+							title: 'Success',
+							message: 'Data Berhasil diubah',
+							position: 'topRight'
+							});
+							setTimeout(function() {
+							window.location.href = '?pg=pelanggan';
+							}, 2000);
+					 </script>";
 			}
 		}
 	?>
@@ -164,9 +170,9 @@
 									<th><input type='checkbox' id='ceksemua'></th>
 									<th>#</th>
 									<th nowrap>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Nama Pelanggan&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</th>
-									<th>Alamat</th>
-									<th>Phone</th>
-									<th>Layanan</th>
+									<th nowrap>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Alamat&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</th>
+									<th nowrap>&emsp;&emsp;&emsp;Phone&emsp;&emsp;&emsp;</th>
+									<th nowrap>&emsp;&emsp;&emsp;Layanan&emsp;&emsp;&emsp;</th>
 									<th nowrap>Customer Account</th>
 									<th>Customer Account Site</th>
 									<th>Customer Account Nipnas</th>
@@ -175,78 +181,11 @@
 									<th nowrap>&emsp;Nomor Quote&emsp;</th>
 									<th nowrap>Nomor Aggrement</th>
 									<th nowrap>&emsp;Nomor Order&emsp;</th>
-									<th>Sid</th>
-									<th>Aksi</th>
+									<th class="text-center">Sid</th>
+									<th class="text-center">Aksi</th>
 								</tr>
 							</thead>
 						</table>
-						<tbody>
-							<!-- Edit Script Start -->
-							<script>
-								$('#form-edit<?= $no ?>').submit(function(e) {
-									e.preventDefault();
-									$.ajax({
-										type: 'POST',
-										url: 'mod_am/crud_am.php?pg=edit',
-										data: new FormData(this),
-										processData: false,
-										contentType: false,
-										cache: false,
-										beforeSend: function() {
-											$('#btnsimpan').prop('disabled', true);
-										},
-										success: function(data) {
-											var json = data;
-											$('#btnsimpan').prop('disabled', false);
-											if (json == 'ok') {
-												iziToast.success({
-													title: 'Terima Kasih!',
-													message: 'Data berhasil disimpan',
-													position: 'topCenter'
-												});
-
-											} else {
-												iziToast.info({
-													title: 'Sukses',
-													message: 'Data berhasil disimpan',
-													position: 'topCenter'
-												});
-											}
-											setTimeout(function() {
-												window.location.reload();
-											}, 2000);
-											//$('#bodyreset').load(location.href + ' #bodyreset');
-										}
-									});
-									return false;
-								});
-
-								
-											// Hapus with swal
-											$('#basic-datatables').on('click', '.edit', function() {
-													var id = $(this).data('id');
-													$.ajax({
-														url: 'mod_pelanggan/crud_pelanggan.php?pg=edit',
-														type: "POST",
-														data: 'id_pel=' + id,
-														processData: false,
-														contentType: false,
-														cache: false,
-														success: function(data) {
-															iziToast.error({
-																title: 'Success',
-																message: 'Data Berhasil dihapus',
-																position: 'topRight'
-															});
-															setTimeout(function() {
-																window.location.reload();
-															}, 2000);
-														}
-													});
-												});
-										</script>
-										<!-- Script End -->
-						</tbody>
 					</div>
 					<!-- End -->
 				</div>
@@ -254,22 +193,46 @@
 		</div>
 	</div>
 </div>
+
+<!-- Sidebar Nama Pelanggan -->
+<div class="custom-template">
+			<div class="title">Nama Pelanggan</div>
+			<div class="custom-content">
+				<ul class="list-group">
+					<?php
+						$query = mysqli_query($koneksi, "SELECT nama_pel, COUNT(nama_pel) as jumlah FROM tb_pelanggan GROUP BY nama_pel HAVING COUNT(nama_pel) > 1");
+						
+						while ($pel = mysqli_fetch_array($query)) {
+
+					?>
+					<li class="list-group-item d-flex justify-content-between align-items-center">
+					<?= $pel['nama_pel'] ?>
+						<span class="badge badge-danger badge-pill"><?= $pel['jumlah'] ?></span>
+					</li>
+					<?php } ?>
+				</ul>
+			</div>
+			<div class="custom-toggle">
+				<i class="flaticon-profile-1"></i>
+			</div>
+		</div>
+
 <!-- Page Script -->
 <script>
 	
-
-
 	// Custom File Value
 	$(".custom-file-input").on("change", function() {
 	var fileName = $(this).val().split("\\").pop();
 	$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
 	});
 
+	// Checkbox Checklist
 	$('#ceksemua').change(function() {
         $(this).parents('#basic-datatables:eq(0)').
         find(':checkbox').attr('checked', this.checked);
     });
 
+	// Delete By Checklist Function
 	$(function() {
         $("#btnhapus").click(function() {
             id_array = new Array();
@@ -279,7 +242,7 @@
                 i++;
             });
 			swal({
-				title: 'Are you sure?',
+				title: 'Apakah Anda Yakin?',
 				text: 'Akan menghapus data ini!',
 				icon: 'warning',
 				buttons: true,
@@ -314,15 +277,40 @@
             return false;
         })
     });
-	// Testing
-	// $(document).ready(function(){
-	// var table = $('#basic-datatables').DataTable();
-	// //DataTable custom search field
-	// 	$('#custom-filter').keyup( function() {
-	// 	table.search( this.value ).draw();
-	// 	} );
-	// });
-	// Tampil Data 
+		
+	// Delete In Columns
+	$('#basic-datatables').on('click', '.hapus', function() {
+        var id = $(this).data('id');
+        console.log(id);
+        swal({
+            title: 'Apakah Anda yakin?',
+            text: 'Akan menghapus data ini!',
+            icon: 'warning',
+            buttons: true,
+            dangerMode: true,
+        }).then((result) => {
+            if (result) {
+                $.ajax({
+                    url: 'mod_pelanggan/crud_pelanggan.php?pg=hapus',
+                    method: "POST",
+                    data: 'id_pel=' + id,
+                    success: function(data) {
+                        iziToast.error({
+                            title: 'Success',
+                            message: 'Data Berhasil dihapus',
+                            position: 'topRight'
+                        });
+                        setTimeout(function() {
+                            window.location.reload();
+                        }, 2000);
+                    }
+                });
+            }
+        })
+
+    });
+
+	// Display Datatables
 	$(document).ready(function(){
 		var table = $('#basic-datatables').DataTable({
 			processing: true,
@@ -352,7 +340,7 @@
 				{"data": "sid"},
 				{"data": "aksi"},
 			],
-			"columnDefs": [ 
+			columnDefs: [ 
 				{
 				"targets": 0,
 				"orderable": false,
@@ -363,49 +351,9 @@
 		$('#search-filter').keyup( function() {
 		table.search( this.value ).draw();
 		} );
-		$('#search-layanan').keyup( function() {
-		table.search( this.value ).draw();
-		} );
-		// table.on('draw.dt', function () {
-		// 		var info = table.page.info();
-		// 		table.column(, { search: 'applied', order: 'applied', page: 'applied' }).nodes().each(function (cell, i) {
-		// 			cell.innerHTML = i + 1 + info.start;
-		// 		});
-		// 	});
 	});
-	
-	// Hapus with swal
-	$('#basic-datatables').on('click', '.hapus', function() {
-        var id = $(this).data('id');
-        console.log(id);
-        swal({
-            title: 'Are you sure?',
-            text: 'Akan menghapus data ini!',
-            icon: 'warning',
-            buttons: true,
-            dangerMode: true,
-        }).then((result) => {
-            if (result) {
-                $.ajax({
-                    url: 'mod_pelanggan/crud_pelanggan.php?pg=hapus',
-                    method: "POST",
-                    data: 'id_pel=' + id,
-                    success: function(data) {
-                        iziToast.error({
-                            title: 'Success',
-                            message: 'Data Berhasil dihapus',
-                            position: 'topRight'
-                        });
-                        setTimeout(function() {
-                            window.location.reload();
-                        }, 2000);
-                    }
-                });
-            }
-        })
 
-    });
-
+	// Add Function
 	$('#form-tambah').submit(function(e) {
         e.preventDefault();
         $.ajax({
@@ -436,7 +384,7 @@
         return false;
     });
 
-    //IMPORT FILE PENDUKUNG 
+    //Import Data Function
     $('#form-import').on('submit', function(e) {
         e.preventDefault();
         $.ajax({
@@ -469,14 +417,3 @@
     });
 </script>
 <!-- End -->
-
-<!-- Auto Close Alert -->
-<script>
-    $(document).ready(function() {
-        window.setTimeout(function() {
-            $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                $(this).remove();
-            });
-        }, 2000);
-    });    
-</script>

@@ -17,23 +17,6 @@
 		</ul>
 	</div>
 
-	<!-- Notif -->
-	<?php 
-		if(isset($_GET['pesan'])){
-			if($_GET['pesan'] == "sukses"){
-				echo "<script type='text/javascript'>iziToast.info({
-							title: 'Success',
-							message: 'Data Berhasil diubah',
-							position: 'topRight'
-							});
-							setTimeout(function() {
-							window.location.href = '?pg=order';
-							}, 2000);
-					 </script>";
-			}
-		}
-	?>
-
 		<!-- Removes Default Search Datatables -->
 	<!-- <style>
 		.dataTables_filter {
@@ -240,15 +223,31 @@
 						<table id="basic-datatables" class="display table table-striped table-hover" >
 							<thead align="center">
 								<tr>
-									<th><input type='checkbox' id='ceksemua'></th>
+									<!-- <th><input type='checkbox' id='ceksemua'></th> -->
 									<th>#</th>
 									<th nowrap>Tanggal Input</th>
 									<th>Segmen</th>
 									<th>Nama AM</th>
 									<th nowrap>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Nama Pelanggan&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</th>
+									<th>Layanan</th>
+									<th nowrap>&emsp;&emsp;&emsp;&emsp;Harga OTC&emsp;&emsp;&emsp;&emsp;</th>
+									<th nowrap>&emsp;&emsp;&emsp;&emsp;Harga Monthly&emsp;&emsp;&emsp;&emsp;</th>
+									<th nowrap>Status Layanan</th>
+									<th nowrap>Customer Account</th>
+									<th nowrap>CA Site</th>
+									<th nowrap>CA Nipnas</th>
+									<th nowrap>Billing Account</th>
+									<th nowrap>Billing Account Site</th>
+									<th nowrap>&emsp;Nomor Quote&emsp;</th>
+									<th nowrap>Nomor Aggrement</th>
 									<th nowrap>&emsp;Nomor Order&emsp;</th>
-									<th nowrap>Date End Contract</th>
+									<th nowrap>Status Order</th>
+									<th nowrap>Date End Of Contract</th>
 									<th>Contract Remaining</th>
+									<th nowrap>Date Prov of Contract</th>
+									<th nowrap>Nomor Order Lama</th>
+									<th>Sid</th>
+									<th>Keterangan</th>
 									<th>Aksi</th>
 								</tr>
 							</thead>
@@ -298,49 +297,65 @@
 			processing: true,
 			serverSide: true,
 			
-			// "ajax": "mod_order/fetchData.php",
+			"ajax": "mod_order/fetchData.php",
+			// ajax: {
+			// 	"url": "mod_order/fetchDatas.php?action=table_data",
+			// 	"dataType": "json",
+			// 	"type": "POST"
+			// },
+			// columns:[
+			// 	{"data": "check_id"},
+			// 	{"data": "no"},
+			// 	{"data": "tgl_input"},
+			// 	{"data": "segmen"},
+			// 	{"data": "nama_am"},
+			// 	{"data": "nama_pel"},
+			// 	{"data": "layanan"},
+			// 	{"data": "hrg_otc"},
+			// 	{"data": "hrg_mountly"},
+			// 	{"data": "status_lyn"},
+			// 	{"data": "ca"},
+			// 	{"data": "ca_site"},
+			// 	{"data": "ca_nipnas"},
+			// 	{"data": "ba"},
+			// 	{"data": "ba_site"},
+			// 	{"data": "nomor_quote"},
+			// 	{"data": "nomor_aggre"},
+			// 	{"data": "nomor_order"},
+			// 	{"data": "status_order"},
+			// 	{"data": "date_end"},
+			// 	{"data": "remaining"},
+			// 	{"data": "date_prov"},
+			// 	{"data": "order_lama"},
+			// 	{"data": "sid"},
+			// 	{"data": "ket"},
+			// 	{"data": "aksi"},
+			// ],
 			// "columnDefs": [ 
-			// 				{
-			// 					"targets": 0,
-			// 					"orderable": false,
-			// 				},
-			// 			],
-			ajax: {
-				"url": "mod_order/fetchDatas.php?action=table_data",
-				"dataType": "json",
-				"type": "POST"
-			},
-			columns:[
-				{"data": "check_id"},
-				{"data": "no"},
-				{"data": "tgl_input"},
-				{"data": "segmen"},
-				{"data": "nama_am"},
-				{"data": "nama_pel"},
-				{"data": "nomor_order"},
-				{"data": "date_end"},
-				{"data": "remaining"},
-				{"data": "aksi"},
-			],
-			columnDefs: [ 
-				{
-					"targets": 0,
-					"orderable": false,
-				},
-				{
-					"targets": 7,
-					"className": "text-center",
-				},
-				{
-					"targets": 8,
-					"className": "text-center",
-				}
-			],
+			// 	{
+			// 		"targets": 0,
+			// 		"orderable": false,
+			// 	},
+			// 	{
+			// 		"targets": 7,
+			// 		"render": $.fn.dataTable.render.number( '.', '', '', 'Rp. ' )
+					
+			// 	},
+			// 	{
+			// 		"targets": 8,
+			// 		"render": $.fn.dataTable.render.number( '.', '', '', 'Rp. ' )
+					
+			// 	},
+			// 	{
+			// 		"targets": 20,
+			// 		"className": "text-center",
+			// 	}
+			// ]
 		});
 		// Filter Search
-		$('#search-filter').keyup( function() {
-		table.search( this.value ).draw();
-		} );
+		// $('#search-filter').keyup( function() {
+		// table.search( this.value ).draw();
+		// } );
 		// $('#search-layanan').keyup( function() {
 		// table.search( this.value ).draw();
 		// } );
@@ -403,13 +418,15 @@
 // 	        });
 // 	});
 
+	
+	
+
 
 	$('#ceksemua').change(function() {
         $(this).parents('#basic-datatables:eq(0)').
         find(':checkbox').attr('checked', this.checked);
     });
-
-	$(function() {
+    $(function() {
         $("#btnhapus").click(function() {
             id_array = new Array();
             i = 0;
@@ -417,39 +434,23 @@
                 id_array[i] = $(this).val();
                 i++;
             });
-			swal({
-				title: 'Are you sure?',
-				text: 'Akan menghapus data ini!',
-				icon: 'warning',
-				buttons: true,
-				dangerMode: true,
-			}).then((result) => {
-				if (result) {
-					$.ajax({
-						url: "mod_order/crud_order.php?pg=hapusdaftar",
-						data: "kode=" + id_array,
-						type: "POST",
-						success: function(respon) {
-							
-							if (respon == 1) {
-								$("input.cekpilih:checked").each(function() {
-									$(this).parent().parent().remove('.cekpilih').animate({
-										opacity: "hide"
-									}, "slow");
-								})
-							}
-							iziToast.error({
-								title: 'Success',
-								message: 'Data Berhasil dihapus',
-								position: 'topRight'
-							});
-						setTimeout(function() {
-								window.location.reload();
-							}, 2000);
-						}
-					});
-				}
-			})
+            $.ajax({
+                url: "mod_order/crud_order.php?pg=hapusdaftar",
+                data: "kode=" + id_array,
+                type: "POST",
+                success: function(respon) {
+					
+                    if (respon == 1) {
+                        $("input.cekpilih:checked").each(function() {
+                            $(this).parent().parent().remove('.cekpilih').animate({
+                                opacity: "hide"
+                            }, "slow");
+                        })
+                    }setTimeout(function() {
+                        window.location.reload();
+                    }, 2000);
+                }
+            });
             return false;
         })
     });
@@ -512,38 +513,6 @@
             }
         });
         return false;
-    });
-
-		// Hapus with swal
-		$('#basic-datatables').on('click', '.hapus', function() {
-        var id = $(this).data('id');
-        console.log(id);
-        swal({
-            title: 'Are you sure?',
-            text: 'Akan menghapus data ini!',
-            icon: 'warning',
-            buttons: true,
-            dangerMode: true,
-        }).then((result) => {
-            if (result) {
-                $.ajax({
-                    url: 'mod_order/crud_order.php?pg=hapus',
-                    method: "POST",
-                    data: 'id_pel=' + id,
-                    success: function(data) {
-                        iziToast.error({
-                            title: 'Success',
-                            message: 'Data Berhasil dihapus',
-                            position: 'topRight'
-                        });
-                        setTimeout(function() {
-                            window.location.reload();
-                        }, 2000);
-                    }
-                });
-            }
-        })
-
     });
 
     //IMPORT FILE PENDUKUNG 

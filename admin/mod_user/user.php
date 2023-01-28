@@ -27,6 +27,8 @@
 					<button class="btn btn-dark btn-xs" data-toggle="modal" data-target="#tambahdata"><i class="fas fa-plus-square"></i> Tambah</button>
 					<button type="button" id="btnhapus" class="btn btn-dark btn-xs"><i class="fas fa-trash    "></i> Hapus</button>
 					<?php } ?>
+
+					<!-- Not Used -->
 					<!-- Modal Area -->
 					<!-- Modal Import -->
 				    <div class="modal fade" id="importdata" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
@@ -284,6 +286,7 @@
 											</div>
 										</div>
 										<!-- Modal Edit Ends -->
+
 										<!-- Edit Script Start -->
 										<script>
 											$('#form-edit<?= $no ?>').submit(function(e) {
@@ -340,19 +343,19 @@
 </div>
 <!-- Page Script -->
 <script>
-	// Custom File Value Style
+	// Custom File Value
 	$(".custom-file-input").on("change", function() {
 		var fileName = $(this).val().split("\\").pop();
 		$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
 	});
 
-	// Checklist Value Check
+	// Checkbox Checklist
 	$('#ceksemua').change(function() {
         $(this).parents('#basic-datatables1:eq(0)').
         find(':checkbox').attr('checked', this.checked);
     });
 
-	// Delete Button From Checklist Value
+	// Delete By Checklist Function
     $(function() {
         $("#btnhapus").click(function() {
             id_array = new Array();
@@ -379,7 +382,7 @@
         })
     });
 	
-	// Hapus with swal
+	// Delete In Columns
 		$('#basic-datatables1').on('click', '.hapus', function() {
         var id = $(this).data('id');
         console.log(id);
@@ -411,7 +414,7 @@
 
     });
 
-	// Add Data
+	// Add Function
 	$('#form-tambah').on('submit', function(e) {
         e.preventDefault();
         $.ajax({
@@ -451,7 +454,7 @@
         return false;
     });
 
-	// Edit Data
+	// Update Function
 	$('#form-edit').on('submit', function(e) {
         e.preventDefault();
         $.ajax({

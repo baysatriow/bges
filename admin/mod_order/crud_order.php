@@ -8,15 +8,25 @@ session_start();
 if (!isset($_SESSION['id_user'])) {
     die('Anda tidak diijinkan mengakses langsung');
 }
-if ($pg == 'edit') {
+if ($pg == 'update') {
+    $id = $_POST['id_order'];
     $data = [
-        'nama_am'          => $_POST['nama_am'],
-        'nik'           => $_POST['nik'],
-        'segmen'           => $_POST['segmen'],
+        'tgl_input'       => $_POST['tgl_input'],
+        'nama_am'         => $_POST['nama_am'],
+        'hrg_otc'         => $_POST['hrg_otc'],
+        'hrg_mountly'     => $_POST['hrg_mountly'],
+        'status_lyn'      => $_POST['status_lyn'],
+        'status_order'    => $_POST['status_order'],
+        'date_end'        => $_POST['date_end'],
+        'date_prov'       => $_POST['date_prov'],
+        'order_lama'      => $_POST['order_lama'],
+        'ket'             => $_POST['ket'],
+        'no_order'        => $_POST['nomor_order'],
     ];
-    $id_am = $_POST['id_am'];
-    $exec = update($koneksi, 'tb_am', $data, ['id_am' => $id_am]);
-    echo $exec;
+
+    $exec = update($koneksi, 'tb_order', $data, ['id_order' => $id]);
+
+    header("Location: ../?pg=order&pesan=sukses");  
 }
 if ($pg == 'tambah') {
     $data = [
@@ -63,11 +73,6 @@ if ($pg == 'auto_pel') {
                
     //tampil data
     echo json_encode($data);
-}
-
-if ($pg == 'hapus') {
-    $npsn = $_GET['id_am'];
-    delete($koneksi, 'tb_am', ['id_am' => $npsn]);
 }
 if ($pg == 'import') {
     if (isset($_FILES['file']['name'])) {
@@ -186,9 +191,23 @@ if ($pg == 'import') {
         echo "gagal";
     }
 }
+
+// Hapus 1 Data Berdasarkan ID
+if ($pg == 'hapus') {
+
+    $id=$_POST['id_pel'];
+    // $hapus = mysql_query("delete from tb_am where id=".$id." ");
+    $query = mysqli_query($koneksi, "DELETE from  tb_order where id_order=".$id." ");
+    if($query) {
+        echo "OK";
+    } else {
+        // 
+    }
+}
+
 if ($pg == 'hapusdaftar') {
     $kode = $_POST['kode'];
-    $query = mysqli_query($koneksi, "DELETE from tb_am where id_am in (" . $kode . ")");
+    $query = mysqli_query($koneksi, "DELETE from tb_order where id_order in (" . $kode . ")");
     if ($query) {
         echo 1;
     } else {

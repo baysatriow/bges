@@ -28,6 +28,8 @@
 					<button type="button" id="btnhapus" class="btn btn-dark btn-xs"><i class="fas fa-trash    "></i> Hapus</button>
 					<?php } ?>
 					<!-- Modal Area -->
+
+					<!-- Not Used -->
 					<!-- Modal Import -->
 				    <div class="modal fade" id="importdata" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 				        <div class="modal-dialog" role="document">
@@ -171,7 +173,7 @@
 
 										<!-- Modal Edit Here -->
 										<div class="modal fade bd-example-modal-lg" id="modal-edit<?= $no ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-									        <div class="modal-dialog" role="document">
+									        <div class="modal-dialog " role="document">
 									            <div class="modal-content">
 									            	<!-- Desc -->
 									            	
@@ -206,6 +208,7 @@
 									        </div>
 									    </div>
 										<!-- Modal End -->
+										
 										<!-- Edit Script Start -->
 										<script>
 											$('#form-edit<?= $no ?>').submit(function(e) {
@@ -264,14 +267,16 @@
 		</div>
 	</div>
 </div>
+
 <!-- Page Script -->
 <script>
-	// Checklist Box Delete Check
+
+	// Checkbox Checklist
 	$('#ceksemua').change(function() {
         $(this).parents('#basic-datatables1:eq(0)').
         find(':checkbox').attr('checked', this.checked);
     });
-	
+
     $(function() {
 			$("#btnhapus").click(function() {
 				id_array = new Array();
@@ -311,7 +316,7 @@
 			})
 		});
 
-	// Hapus with swal
+	// Delete In Columns
 	$('#basic-datatables1').on('click', '.hapus', function() {
         var id = $(this).data('id');
         console.log(id);
@@ -343,7 +348,7 @@
 
     });
 
-	// Add Record 
+	// Add Function
 	$('#form-tambah').submit(function(e) {
         e.preventDefault();
         $.ajax({
