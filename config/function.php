@@ -13,7 +13,7 @@ if (!function_exists('base_url')) {
 			$tmplt = $atRoot ? ($atCore ? "%s://%s/%s/" : "%s://%s/") : ($atCore ? "%s://%s/%s/" : "%s://%s%s");
 			$end = $atRoot ? ($atCore ? $core : $hostname) : ($atCore ? $core : $dir);
 			$base_url = sprintf($tmplt, $http, $hostname, $end);
-		} else $base_url = 'http://localhost/bges';
+		} else $base_url = 'http://localhost/bges/admin';
 		if ($parse) {
 			$base_url = parse_url($base_url);
 			if (isset($base_url['path'])) if ($base_url['path'] == '/') $base_url['path'] = '';
