@@ -344,6 +344,59 @@
 				{
 				"targets": 0,
 				"orderable": false,
+				"sorting": false,
+				},
+				{
+				"targets": 3,
+				"orderable": false,
+				},
+				{
+				"targets": 4,
+				"orderable": false,
+				},
+				{
+				"targets": 5,
+				"orderable": false,
+				},
+				{
+				"targets": 6,
+				"orderable": false,
+				},
+				{
+				"targets": 7,
+				"orderable": false,
+				},
+				{
+				"targets": 8,
+				"orderable": false,
+				},
+				{
+				"targets": 9,
+				"orderable": false,
+				},
+				{
+				"targets": 10,
+				"orderable": false,
+				},
+				{
+				"targets": 11,
+				"orderable": false,
+				},
+				{
+				"targets": 12,
+				"orderable": false,
+				},
+				{
+				"targets": 13,
+				"orderable": false,
+				},
+				{
+				"targets": 14,
+				"orderable": false,
+				},
+				{
+				"targets": 15,
+				"orderable": false,
 				},
 			]
 		});

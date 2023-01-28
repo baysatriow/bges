@@ -7,6 +7,7 @@ if (!isset($_SESSION['id_user'])) {
     die('Anda tidak diijinkan mengakses langsung');
 }
 
+// Update Data Query
 if ($pg == 'ubah') {
 
     $username = mysqli_real_escape_string($koneksi, $_POST['username']);

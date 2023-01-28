@@ -114,7 +114,7 @@
         $(this).next('.custom-file-label').addClass("selected").html(fileName);
     });
 
-	// Edit Data
+	// Update Data Function
     $('#form-setting').on('submit', function(e) {
         e.preventDefault();
         $.ajax({
@@ -139,7 +139,7 @@
 				}else if (data == 'PW') {
                     iziToast.warning({
                         title: 'Maaf!',
-                        message: 'Password Lama Salah!!',
+                        message: 'Password Saat Ini Salah!!',
                         position: 'topRight'
                     });
                 }else{

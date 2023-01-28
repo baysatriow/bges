@@ -122,7 +122,7 @@
 					<!-- Tabel Start -->
 					<div class="table-responsive">
 						<table id="basic-datatables1" class="display table table-striped table-hover" >
-							<thead>
+							<thead class="text-center">
 								<tr>
 									<th><input type='checkbox' id='ceksemua'></th>
 									<th>#</th>
